@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About ComePay — Our Story, Vision & Values</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <style>
+    :root {
+      --red: #af0e0e;
+      --red-light: #d41212;
+      --red-dark: #8a0b0b;
+      --blue: #033579;
+      --blue-light: #0549a8;
+      --blue-dark: #022660;
+      --white: #ffffff;
+      --off-white: #f8f6f3;
+      --cream: #fdf9f4;
+      --text: #0d0d0d;
+      --muted: #4b5563;
+      --border: rgba(3, 53, 121, 0.1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+      line-height: 1.1;
+      color: var(--blue);
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(253, 249, 244, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--blue);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { display: flex; gap: 0.75rem; align-items: center; }
+
+    .btn-outline-nav {
+      padding: 0.5rem 1.2rem;
+      border: 1.5px solid var(--blue);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--blue);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-outline-nav:hover { background: var(--blue); color: var(--white); }
+
+    .btn-filled-nav {
+      padding: 0.5rem 1.4rem;
+      border-radius: 50px;
+      background: var(--red);
+      border: 1.5px solid var(--red);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-filled-nav:hover {
+      background: var(--red-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(175, 14, 14, 0.4);
+    }
+
+    /* ── ABOUT HERO ANIMATIONS ── */
+    .about-hero {
+      min-height: 60vh;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, #0a2d6b 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 5% 80px;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Floating Abstract Glowing Circles */
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      mix-blend-mode: screen;
+      animation: ambientFloat 12s ease-in-out infinite alternate;
+    }
+    .glow-1 { width: 400px; height: 400px; background: var(--red); top: -100px; right: -50px; }
+    .glow-2 { width: 300px; height: 300px; background: var(--blue-light); bottom: -50px; left: -50px; animation-delay: -4s; }
+
+    @keyframes ambientFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.15); }
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      color: var(--white) !important;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .about-hero h1 .accent { color: #ff4d4d; }
+
+    .about-hero p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85) !important;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 0.2s;
+    }
+
+    @keyframes heroFadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── GENERAL SECTIONS & SCROLL REVEAL ── */
+    section { padding: 90px 5%; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Global Scroll Entrance Rules */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── STORY SECTION ── */
+    .story-section { background: var(--white); }
+    .story-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .story-text p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-visual {
+      position: relative;
+      background: var(--cream);
+      border-radius: 24px;
+      padding: 3rem;
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .story-graphic-box {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      padding: 2.5rem;
+      border-radius: 20px;
+      color: var(--white);
+      box-shadow: 0 20px 40px rgba(3, 53, 121, 0.15);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .story-graphic-box:hover {
+      transform: scale(1.03) rotate(-1deg);
+    }
+
+    .story-graphic-box h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-graphic-box p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    /* ── METRICS SECTION ── */
+    .metrics-section { background: var(--blue); color: var(--white); text-align: center; }
+    .metrics-inner { max-width: 1200px; margin: 0 auto; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+    
+    .metric-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      transition: all 0.4s ease;
+    }
+    .metric-card:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .metric-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .metric-lbl { font-size: 0.88rem; color: rgba(255, 255, 255, 0.7); }
+
+    /* ── VALUES SECTION ── */
+    .values-section { background: var(--cream); }
+    .values-inner { max-width: 1200px; margin: 0 auto; }
+    .values-header { text-align: center; margin-bottom: 3.5rem; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    
+    .value-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      will-change: transform;
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .value-card:hover {
+      box-shadow: 0 20px 45px rgba(3, 53, 121, 0.08);
+      border-color: rgba(3, 53, 121, 0.2);
+    }
+
+    .value-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(175, 14, 14, 0.08);
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .value-card:hover .value-icon {
+      transform: scale(1.15) rotate(8deg);
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .value-card h4 { font-size: 1.25rem; color: var(--blue); margin-bottom: 0.75rem; font-weight: 700; }
+    .value-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── TEAM SECTION ── */
+    .team-section { background: var(--white); }
+    .team-inner { max-width: 1200px; margin: 0 auto; }
+    .team-header { text-align: center; margin-bottom: 4rem; }
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .team-member { text-align: center; }
+    
+    .avatar-wrapper {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--cream);
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    
+    .avatar-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(3, 53, 121, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .team-member:hover .avatar-wrapper::after { opacity: 1; }
+
+    .avatar-placeholder {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: var(--blue);
+      opacity: 0.5;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .team-member:hover .avatar-placeholder {
+      transform: scale(1.1);
+    }
+
+    .team-member h4 { font-size: 1.1rem; color: var(--text); font-weight: 700; margin-bottom: 0.25rem; }
+    .team-member p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--text); color: rgba(255, 255, 255, 0.6); padding: 65px 5% 28px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-top: 0.75rem; max-width: 260px; color: rgba(255,255,255,0.7); }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.7rem; color: var(--white); }
+    .footer-logo span { color: var(--red); }
+    .footer-col h5 { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--white); font-size: 0.9rem; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col ul a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 1.75rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      .story-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media(max-width:640px) {
+      .nav-links, .nav-cta { display: none; }
+      section { padding: 65px 4%; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="./index.html" class="nav-logo"><img src="./cropped-Comepay-Logo.png" width="75px" height="50px" alt="" srcset=""></a>
+    <ul class="nav-links">
+      <li><a href="index.html#account-types">Personal</a></li>
+      <li><a href="index.html#account-types">Business</a></li>
+      <li><a href="index.html#products">Products</a></li>
+      <li><a href="about.html" style="color:var(--blue); font-weight:700;">About Us</a></li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="btn-outline-nav">Log In</a>
+      <a href="#" class="btn-filled-nav">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- ABOUT HERO (Kinetic Float Background) -->
+  <section class="about-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="about-hero-content">
+      <h1>Moving Money, <br><span class="accent">Moving Africa</span> Forward</h1>
+      <p>We are a mission-driven financial infrastructure designed to break borders, challenge status quos, and make economic velocity accessible to everyone.</p>
+    </div>
+  </section>
+
+  <!-- OUR STORY SECTION -->
+  <section class="story-section">
+    <div class="story-inner">
+      <div class="story-text reveal">
+        <div class="section-tag">Our History</div>
+        <h2 class="section-title">Born Out of Frustration, Built for Freedom</h2>
+        <p>ComePay began as a simple thought experiment: Why does moving traditional assets across African commerce pipelines still feel heavy, manual, and unforgivingly slow?</p>
+        <p>Traditional frameworks isolated builders and micro-enterprises from cross-border opportunities. In response, we built an integrated infrastructure engineered for absolute structural reliability, instant delivery architecture, and minimal operational stress.</p>
+        <p>Today, we don't just clear payments; we clear pathways for daily trade, financial stability, and continuous personal growth.</p>
+      </div>
+      <div class="story-visual reveal">
+        <div class="story-graphic-box">
+          <h3>Formed with Purpose</h3>
+          <p>Connecting thousands of merchants and retail consumers daily via robust domestic liquidity models and enterprise API modules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT / METRICS (Smooth Slide Entrance) -->
+  <section class="metrics-section">
+    <div class="metrics-inner reveal">
+      <div class="section-tag" style="color:rgba(255,255,255,0.7)">By The Numbers</div>
+      <h2 class="section-title" style="color:var(--white)">Our Ecosystem Footprint</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-num" data-target="2.4">0</div>
+          <div class="metric-lbl">Processed Daily (Billions)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" data-target="500">0</div>
+          <div class="metric-lbl">Active Accounts (Thousands)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" data-target="99.9">0</div>
+          <div class="metric-lbl">API Core Uptime (%)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" data-target="30">0</div>
+          <div class="metric-lbl">Currencies Supported</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE VALUES (3D Interactive Tilt Cards) -->
+  <section class="values-section">
+    <div class="values-inner">
+      <div class="values-header reveal">
+        <div class="section-tag">What Drives Us</div>
+        <h2 class="section-title">Our Operational DNA</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h4>Radical Trust</h4>
+          <p>Security is not a product upgrade feature—it is our absolute floor default. We prioritize institutional compliance and state-of-the-art encryption across every single transaction block.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h4>Extreme Velocity</h4>
+          <p>Friction hurts micro-margins. We systematically eliminate multi-day settlement bottlenecks, optimizing core workflows so capital moves at real-time speeds.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="fa-solid fa-users"></i></div>
+          <h4>Absolute Access</h4>
+          <p>Enterprise tools shouldn't only belong to enterprise institutions. We democratize retail tools, payment APIs, and borderless transfers for all scale operators.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION (Staggered Grid Animation) -->
+  <section class="team-section">
+    <div class="team-inner">
+      <div class="team-header reveal">
+        <div class="section-tag">The Innovators</div>
+        <h2 class="section-title">Meet The Leadership</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-member reveal">
+          <div class="avatar-wrapper"><div class="avatar-placeholder">TA</div></div>
+          <h4>Tunde Adebayo</h4>
+          <p>Co-Founder & CEO</p>
+        </div>
+        <div class="team-member reveal">
+          <div class="avatar-wrapper"><div class="avatar-placeholder">CO</div></div>
+          <h4>Chioma Okafor</h4>
+          <p>Chief Product Officer</p>
+        </div>
+        <div class="team-member reveal">
+          <div class="avatar-wrapper"><div class="avatar-placeholder">FE</div></div>
+          <h4>Femi Egbe</h4>
+          <p>Head of Engineering</p>
+        </div>
+        <div class="team-member reveal">
+          <div class="avatar-wrapper"><div class="avatar-placeholder">AM</div></div>
+          <h4>Amina Musa</h4>
+          <p>Compliance Director</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Come<span>Pay</span></div>
+          <p>Nigeria's most trusted digital finance platform. Move money, save smart, invest boldly — all on one app.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Products</h5>
+          <ul>
+            <li><a href="index.html#products">ComePay Cards</a></li>
+            <li><a href="index.html#products">Instant Transfers</a></li>
+            <li><a href="index.html#products">Savings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 ComePay Technologies Ltd. Licensed by the CBN.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. SCROLL INTERSECTION OBSERVER FOR ENTRANCE ANIMATIONS
+    const reveals = document.querySelectorAll('.reveal');
+    const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // If this entry contains the metric numbers, start counting up
+          if (entry.target.classList.contains('metrics-inner')) {
+            startCounting();
+          }
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // 2. DYNAMIC LIVE COUNTER ANIMATION FOR METRICS
+    function startCounting() {
+      const counters = document.querySelectorAll('.metric-num');
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const isDecimal = target % 1 !== 0;
+        let count = 0;
+        const speed = target / 60; // Complete within 60 frames (~1 sec)
+
+        const updateCount = () => {
+          count += speed;
+          if (count < target) {
+            counter.innerText = isDecimal ? count.toFixed(1) : Math.floor(count);
+            requestAnimationFrame(updateCount);
+          } else {
+            counter.innerText = target + (counter.parentElement.children[0] === counter && target === 2.4 || target === 500 ? '+' : '%');
+            // Re-append modifiers cleanly
+            if (target === 2.4) counter.innerText = "₦2.4B+";
+            if (target === 500) counter.innerText = "500K+";
+            if (target === 99.9) counter.innerText = "99.9%";
+            if (target === 30) counter.innerText = "30+";
+          }
+        };
+        updateCount();
+      });
+    }
+
+    // 3. INTERACTIVE 3D TILT EFFECT ON VALUE CARDS
+    document.querySelectorAll('.value-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Calculate tilt angles (-7deg to 7deg max for clean layout stability)
+        const xRotation = ((y / rect.height) - 0.5) * -14;
+        const yRotation = ((x / rect.width) - 0.5) * 14;
+        
+        card.style.transform = `perspective(1000px) scale(1.02) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+
+    // 4. NAVBAR SCROLL EFFECT
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
