@@ -1,0 +1,3881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComePay Business — Power Your Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" />
+  <style>
+    :root {
+      --red: #af0e0e;
+      --red-l: #d41212;
+      --red-d: #8a0b0b;
+      --blue: #033579;
+      --blue-l: #0549a8;
+      --blue-d: #022660;
+      --white: #fff;
+      --text: #0d0d0d;
+      --muted: #6b7280;
+      --border: rgba(3, 53, 121, 0.1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Poppins", sans-serif;
+      line-height: 1.1;
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(44px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeRight {
+      from {
+        opacity: 0;
+        transform: translateX(-44px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    @keyframes floatR {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(1deg);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(1.4);
+      }
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spinSlow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes blob {
+
+      0%,
+      100% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+      }
+
+      50% {
+        border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(.7);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes lineGrow {
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes barRise {
+      from {
+        transform: scaleY(0);
+      }
+
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes ping {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      75%,
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes countUp {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes gradShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    ;
+
+    @keyframes shimmer2 {
+      0% {
+        background-position: -600px 0;
+      }
+
+      100% {
+        background-position: 600px 0;
+      }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      transition: all .4s;
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(0, 0, 0, .06);
+    }
+
+    .nav-logo {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .nav-logo-pip {
+      width: 28px;
+      height: 28px;
+      background: var(--red);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    nav.scrolled .nav-logo {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, .82);
+      text-decoration: none;
+      transition: color .3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    nav.scrolled .nav-links a {
+      color: var(--text);
+    }
+
+    nav.scrolled .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .nav-tab {
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .3s;
+    }
+
+    .nt-p {
+      color: rgba(255, 255, 255, .6);
+      border: 1px solid rgba(255, 255, 255, .2);
+    }
+
+    .nt-p:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .5);
+    }
+
+    .nt-b {
+      background: #fff;
+      color: var(--blue);
+    }
+
+    nav.scrolled .nt-p {
+      color: var(--muted);
+      border-color: var(--border);
+    }
+
+    nav.scrolled .nt-p:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    nav.scrolled .nt-b {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-open {
+      padding: .48rem 1.3rem;
+      border-radius: 50px;
+      background: var(--red);
+      border: none;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: .84rem;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+    }
+
+    .btn-open:hover {
+      background: var(--red-l);
+      box-shadow: 0 4px 16px rgba(175, 14, 14, .4);
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 23px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    nav.scrolled .hamburger span {
+      background: var(--text);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mob-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 1.5rem 5%;
+      flex-direction: column;
+      gap: .8rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .1);
+      z-index: 999;
+    }
+
+    .mob-menu.open {
+      display: flex;
+    }
+
+    .mob-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .95rem;
+      padding: .45rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── SHARED ── */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+
+    .tag::before {
+      content: '';
+      width: 14px;
+      height: 2px;
+      border-radius: 2px;
+    }
+
+    .tag-red {
+      color: var(--red);
+    }
+
+    .tag-red::before {
+      background: var(--red);
+    }
+
+    .tag-white {
+      color: rgba(255, 255, 255, .65);
+    }
+
+    .tag-white::before {
+      background: rgba(255, 255, 255, .4);
+    }
+
+    .tag-blue {
+      color: #4d8de8;
+    }
+
+    .tag-blue::before {
+      background: #4d8de8;
+    }
+
+    .tag-c {
+      justify-content: center;
+    }
+
+    .tag-c::before {
+      display: none;
+    }
+
+    .sec-title {
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: .9rem;
+    }
+
+    .sec-sub {
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .75s cubic-bezier(.22, 1, .36, 1), transform .75s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-l {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity .75s cubic-bezier(.22, 1, .36, 1), transform .75s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .reveal-l.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-r {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity .75s cubic-bezier(.22, 1, .36, 1), transform .75s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .reveal-r.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .stagger-1 {
+      transition-delay: .1s !important;
+    }
+
+    .stagger-2 {
+      transition-delay: .2s !important;
+    }
+
+    .stagger-3 {
+      transition-delay: .3s !important;
+    }
+
+    .stagger-4 {
+      transition-delay: .4s !important;
+    }
+
+    .stagger-5 {
+      transition-delay: .5s !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #040e20 0%, #0b1d3a 45%, #0e2550 75%, #1a0a3d 100%);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 110px 6% 70px;
+      gap: 3rem;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+
+    .hg1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(175, 14, 14, .22);
+      top: -150px;
+      right: -80px;
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .hg2 {
+      width: 350px;
+      height: 350px;
+      background: rgba(3, 53, 121, .3);
+      bottom: -80px;
+      left: -60px;
+      animation: float 12s 2s ease-in-out infinite;
+    }
+
+    .hg3 {
+      width: 200px;
+      height: 200px;
+      background: rgba(124, 58, 237, .15);
+      top: 50%;
+      left: 42%;
+      animation: float 8s 1s ease-in-out infinite;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 50px;
+      padding: .38rem 1rem;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .85);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .8s .1s forwards;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.2vw, 2.2rem);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp .8s .25s forwards;
+      line-height: 1.1;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero h1 .ul {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero h1 .ul::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red), transparent);
+      border-radius: 2px;
+    }
+
+    .hero-p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, .62);
+      line-height: 1.78;
+      max-width: 460px;
+      margin-bottom: 2.2rem;
+      opacity: 0;
+      animation: fadeUp .8s .4s forwards;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .8s .55s forwards;
+    }
+
+    .btn-red {
+      padding: .85rem 1.85rem;
+      background: var(--red);
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-red:hover {
+      background: var(--red-l);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(175, 14, 14, .5);
+    }
+
+    .btn-red svg,
+    .btn-ghost-w svg {
+      transition: transform .3s;
+    }
+
+    .btn-red:hover svg {
+      transform: translateX(4px);
+    }
+
+    .btn-ghost-w {
+      padding: .85rem 1.85rem;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, .3);
+      border-radius: 50px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-ghost-w:hover {
+      border-color: rgba(255, 255, 255, .7);
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .hero-chips {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp .8s .7s forwards;
+    }
+
+    .chip {
+      padding: .3rem .85rem;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .15);
+      font-size: .7rem;
+      color: rgba(255, 255, 255, .7);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    /* Hero right — image + floating cards */
+    .hero-right {
+      position: relative;
+      z-index: 2;
+      height: 500px;
+      opacity: 0;
+      animation: fadeLeft .9s .8s forwards;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo {
+      width: 300px;
+      height: 360px;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, .5);
+      animation: floatR 7s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-photo-ring {
+      position: absolute;
+      width: 340px;
+      height: 400px;
+      border-radius: 28px;
+      border: 2px dashed rgba(255, 255, 255, .1);
+      animation: spin 30s linear infinite;
+      z-index: 1;
+    }
+
+    /* Floating UI cards */
+    .float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: .75rem 1rem;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .25);
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      z-index: 4;
+      white-space: nowrap;
+    }
+
+    .fc-top-right {
+      top: 20px;
+      right: -20px;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .fc-bottom-left {
+      bottom: 30px;
+      left: -30px;
+      background: var(--blue);
+      animation: float 6s 1.2s ease-in-out infinite;
+    }
+
+    .fc-mid-right {
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, #059669, #0d9488);
+      animation: float 7s .5s ease-in-out infinite;
+    }
+
+    .fc-icon {
+      font-size: 1.1rem;
+    }
+
+    .fc-lbl {
+      font-size: .58rem;
+      color: var(--muted);
+      display: block;
+    }
+
+    .fc-val {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .fc-bottom-left .fc-lbl,
+    .fc-mid-right .fc-lbl {
+      color: rgba(255, 255, 255, .6);
+    }
+
+    .fc-bottom-left .fc-val,
+    .fc-mid-right .fc-val {
+      color: #fff;
+    }
+
+    /* Dashboard mini card */
+    .hero-dash-mini {
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      width: 220px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.1rem 1.2rem;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .3);
+      z-index: 4;
+      animation: float 6s .8s ease-in-out infinite;
+    }
+
+    .hdm-logo {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: .82rem;
+      color: var(--blue);
+      margin-bottom: .6rem;
+    }
+
+    .hdm-logo span {
+      color: var(--red);
+    }
+
+    .hdm-bal-lbl {
+      font-size: .55rem;
+      color: var(--muted);
+    }
+
+    .hdm-bal {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .hdm-change {
+      font-size: .62rem;
+      color: #10b981;
+      margin-bottom: .6rem;
+    }
+
+    .hdm-bars {
+      display: flex;
+      gap: .3rem;
+      align-items: flex-end;
+      height: 36px;
+    }
+
+    .hdm-bar {
+      flex: 1;
+      border-radius: 3px 3px 0 0;
+      background: rgba(3, 53, 121, .15);
+    }
+
+    .hdm-bar.act {
+      background: var(--blue);
+    }
+
+    .hdm-bar.red {
+      background: var(--red);
+    }
+
+    /* ── STATS ── */
+    .stats-sec {
+      background: #fdf9f4;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 6%;
+    }
+
+    .stats-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.75rem 1rem;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: #fff;
+      transition: all .35s;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(175, 14, 14, .03), rgba(3, 53, 121, .05));
+      opacity: 0;
+      transition: opacity .35s;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--blue));
+      transform: scaleX(0);
+      transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+      transform-origin: left;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 44px rgba(3, 53, 121, .12);
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .stat-n {
+      font-family: "Poppins", sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--blue);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-n em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .stat-l {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: .3rem;
+      display: block;
+    }
+
+    .stat-icon {
+      font-size: 1.6rem;
+      margin-bottom: .75rem;
+      display: block;
+    }
+
+    /* ── PHOTO SHOWCASE ── */
+    .showcase-sec {
+      background: #fff;
+      padding: 90px 6%;
+    }
+
+    .showcase-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .showcase-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .showcase-header .sec-title {
+      color: var(--blue);
+    }
+
+    .showcase-header .sec-sub {
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1.25rem;
+    }
+
+    .photo-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .photo-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .75) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity .4s;
+    }
+
+    .photo-card:hover .photo-card-overlay {
+      opacity: 1;
+    }
+
+    .pco-tag {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgb(255 255 255 / 15%);
+    border: 1px solid rgb(93 85 85 / 30%);
+    border-radius: 50px;
+    padding: .2rem .65rem;
+    width: fit-content;
+    margin-bottom: .4rem;
+}
+
+    .pco-title {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .pco-sub {
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .7);
+      margin-top: .2rem;
+    }
+
+    .photo-card.tall {
+      grid-row: span 2;
+    }
+
+    .photo-card.large {
+      grid-column: span 2;
+    }
+
+    .photo-card.ph1 {
+      height: 280px;
+    }
+
+    .photo-card.ph2 {
+      height: 280px;
+    }
+
+    .photo-card.tall {
+      height: 580px;
+    }
+
+    /* ── BRANDS ── */
+    .brands-sec {
+      background: #fff8f0;
+      padding: 55px 0;
+      border-bottom: 1px solid rgba(3, 53, 121, .07);
+      overflow: hidden;
+    }
+
+    .brands-lbl {
+      text-align: center;
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      font-weight: 600;
+    }
+
+    .carousel-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-wrap::before,
+    .carousel-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 2;
+    }
+
+    .carousel-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, #fff8f0, transparent);
+    }
+
+    .carousel-wrap::after {
+      right: 0;
+      background: linear-gradient(-90deg, #fff8f0, transparent);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+      padding: .5rem 0;
+    }
+
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+
+    .brand-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .55rem 1.1rem;
+      background: #fff;
+      border-radius: 10px;
+      white-space: nowrap;
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: all .3s;
+    }
+
+    .brand-item:hover {
+      color: var(--blue);
+      border-color: rgba(3, 53, 121, .12);
+      transform: translateY(-2px);
+    }
+
+    .brand-ic {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .82rem;
+    }
+
+    /* ── PRODUCT PANELS ── */
+    .prod-heading-band {
+      background: #0d0d0d;
+      padding: 72px 6% 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prod-heading-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .phb-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+
+    .phb-g1 {
+      width: 300px;
+      height: 300px;
+      background: rgba(175, 14, 14, .2);
+      top: -80px;
+      left: 10%;
+    }
+
+    .phb-g2 {
+      width: 250px;
+      height: 250px;
+      background: rgba(3, 53, 121, .25);
+      bottom: -60px;
+      right: 15%;
+    }
+
+    .phb-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .phb-inner .sec-title {
+      color: #fff;
+    }
+
+    .phb-inner .sec-sub {
+      color: rgba(255, 255, 255, .5);
+      margin: 0 auto 2.5rem;
+    }
+
+    .prod-tabs {
+      display: flex;
+      gap: .4rem;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 18px;
+      padding: .4rem;
+      max-width: 920px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .prod-tab {
+      padding: .55rem 1.1rem;
+      border-radius: 13px;
+      border: none;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, .5);
+      cursor: pointer;
+      transition: all .3s;
+      white-space: nowrap;
+    }
+
+    .prod-tab.active {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(175, 14, 14, .4);
+    }
+
+    .prod-tab:not(.active):hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .prod-tab i {
+      margin-right: .35rem;
+    }
+
+    .prod-panel {
+      display: none;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .prod-panel.active {
+      display: block;
+    }
+
+    /* Each panel gets a full-bleed colored section */
+    .pp-wrap {
+      padding: 80px 6%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pp-0 .pp-wrap {
+      background: linear-gradient(135deg, #0f2a50, #1a3d6e);
+    }
+
+    .pp-1 .pp-wrap {
+      background: linear-gradient(135deg, #1a0030, #2d0052);
+    }
+
+    .pp-2 .pp-wrap {
+      background: linear-gradient(135deg, #3d0000, #6b0000);
+    }
+
+    .pp-3 .pp-wrap {
+      background: linear-gradient(135deg, #0a2818, #0f3d24);
+    }
+
+    .pp-4 .pp-wrap {
+      background: linear-gradient(135deg, #1a1200, #2d2000, #1a0a3d);
+    }
+
+    .pp-5 .pp-wrap {
+      background: linear-gradient(135deg, #1a0a00, #2d1800, #0a1a2d);
+    }
+
+    .pp-blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+      opacity: .35;
+    }
+
+    .pp-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* text side */
+    .pp-text h3 {
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .pp-text p {
+      font-size: .95rem;
+      color: rgba(255, 255, 255, .58);
+      line-height: 1.78;
+      margin-bottom: 1.75rem;
+    }
+
+    .pp-feats {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    .pp-feats li {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      font-size: .88rem;
+      color: rgba(255, 255, 255, .8);
+      line-height: 1.6;
+    }
+
+    .fdot {
+      width: 19px;
+      height: 19px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .58rem;
+      color: #fff;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .fd-r {
+      background: var(--red);
+    }
+
+    .fd-p {
+      background: #7c3aed;
+    }
+
+    .fd-g {
+      background: #059669;
+    }
+
+    .fd-o {
+      background: #d97706;
+    }
+
+    .fd-b {
+      background: var(--blue-l);
+    }
+
+    .fd-t {
+      background: #ea580c;
+    }
+
+    .pp-actions {
+      display: flex;
+      gap: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-panel {
+      padding: .8rem 1.7rem;
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: .88rem;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-panel:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-panel svg {
+      transition: transform .3s;
+    }
+
+    .btn-panel:hover svg {
+      transform: translateX(4px);
+    }
+
+    .btn-link-w {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255, 255, 255, .6);
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: .8rem 0;
+      transition: color .3s;
+    }
+
+    .btn-link-w:hover {
+      color: #fff;
+    }
+
+    .btn-link-w svg {
+      transition: transform .3s;
+    }
+
+    .btn-link-w:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* visual side — image + UI overlay */
+    .pp-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pp-photo {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .4);
+    }
+
+    .pp-photo-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .pp-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .5) 100%);
+      z-index: 1;
+    }
+
+    .pp-ui-overlay {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .pp-ui-top {
+      top: -20px;
+      right: -20px;
+      background: #fff;
+      border-radius: 16px;
+      padding: .8rem 1rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .pp-ui-bottom {
+      bottom: -20px;
+      left: -20px;
+      border-radius: 14px;
+      padding: .75rem 1rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      animation: float 6s 1s ease-in-out infinite;
+    }
+
+    .ppui-icon {
+      font-size: 1.1rem;
+    }
+
+    .ppui-lbl {
+      font-size: .58rem;
+      color: var(--muted);
+      display: block;
+    }
+
+    .ppui-val {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .ppui-dark .ppui-lbl {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .ppui-dark .ppui-val {
+      color: #fff;
+    }
+
+    /* ── FEATURES GRID ── */
+    .features-sec {
+      background: #f0f4ff;
+      padding: 90px 6%;
+    }
+
+    .features-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .features-header .sec-title {
+      color: var(--blue);
+    }
+
+    .features-header .sec-sub {
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .feat-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .fd-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(3, 53, 121, .1);
+    }
+
+    .fd-text {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 .5rem;
+      white-space: nowrap;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .feat-card {
+      background: #fff;
+      border: 1px solid rgba(3, 53, 121, .09);
+      border-radius: 18px;
+      padding: 1.4rem 1.2rem;
+      transition: all .4s cubic-bezier(.22, 1, .36, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .feat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      transform: scaleX(0);
+      transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+      transform-origin: left;
+    }
+
+    .fc-blue::after {
+      background: linear-gradient(90deg, var(--blue), var(--blue-l));
+    }
+
+    .fc-red::after {
+      background: linear-gradient(90deg, var(--red), #f87171);
+    }
+
+    .fc-purple::after {
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    }
+
+    .fc-green::after {
+      background: linear-gradient(90deg, #059669, #34d399);
+    }
+
+    .fc-gold::after {
+      background: linear-gradient(90deg, #d97706, #fbbf24);
+    }
+
+    .fc-teal::after {
+      background: linear-gradient(90deg, #0891b2, #22d3ee);
+    }
+
+    .fc-orange::after {
+      background: linear-gradient(90deg, #ea580c, #fb923c);
+    }
+
+    .fc-pink::after {
+      background: linear-gradient(90deg, #be185d, #f472b6);
+    }
+
+    .feat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(3, 53, 121, .12);
+    }
+
+    .feat-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .feat-card:hover .fc-icon {
+      transform: scale(1.12) rotate(-5deg);
+    }
+
+    .fc-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: .85rem;
+      transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .fci-blue {
+      background: rgba(3, 53, 121, .09);
+    }
+
+    .fci-red {
+      background: rgba(175, 14, 14, .09);
+    }
+
+    .fci-purple {
+      background: rgba(124, 58, 237, .09);
+    }
+
+    .fci-green {
+      background: rgba(5, 150, 105, .09);
+    }
+
+    .fci-gold {
+      background: rgba(217, 119, 6, .1);
+    }
+
+    .fci-teal {
+      background: rgba(8, 145, 178, .09);
+    }
+
+    .fci-orange {
+      background: rgba(234, 88, 12, .09);
+    }
+
+    .fci-pink {
+      background: rgba(190, 24, 93, .09);
+    }
+
+    .feat-card h4 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .35rem;
+    }
+
+    .feat-card p {
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+
+    .fc-badge {
+      position: absolute;
+      top: .85rem;
+      right: .85rem;
+      font-size: .57rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      padding: .14rem .5rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    .fcb-new {
+      background: rgba(175, 14, 14, .1);
+      color: var(--red);
+    }
+
+    .fcb-hot {
+      background: rgba(234, 88, 12, .1);
+      color: #ea580c;
+    }
+
+    /* ── PEOPLE SECTION ── */
+    .people-sec {
+      background: #0b1d3a;
+      padding: 90px 6%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .people-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .pg1 {
+      width: 350px;
+      height: 350px;
+      background: rgba(175, 14, 14, .18);
+      top: -80px;
+      right: -60px;
+    }
+
+    .pg2 {
+      width: 250px;
+      height: 250px;
+      background: rgba(124, 58, 237, .2);
+      bottom: -60px;
+      left: -40px;
+    }
+
+    .people-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .people-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .people-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .people-photo img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .people-photo:hover img {
+      transform: scale(1.07);
+    }
+
+    .people-photo.tall img {
+      height: 260px;
+    }
+
+    .people-photo-badge {
+      position: absolute;
+      bottom: .75rem;
+      left: .75rem;
+      background: rgba(0, 0, 0, .65);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      padding: .4rem .7rem;
+    }
+
+    .ppb-name {
+      font-size: .65rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .ppb-role {
+      font-size: .55rem;
+      color: rgba(255, 255, 255, .6);
+    }
+
+    .people-text .sec-title {
+      color: #fff;
+    }
+
+    .people-text .sec-sub {
+      color: rgba(255, 255, 255, .58);
+    }
+
+    .people-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .pstat {
+      padding-left: 1rem;
+      border-left: 2px solid rgba(255, 255, 255, .15);
+    }
+
+    .pstat-num {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      display: block;
+    }
+
+    .pstat-num em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .pstat-lbl {
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .45);
+      display: block;
+    }
+
+    /* ── HIW ── */
+    .hiw-sec {
+      background: #0a2840;
+      padding: 90px 6%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hiw-sec::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .hiw-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .hiw-g1 {
+      width: 350px;
+      height: 350px;
+      background: var(--red);
+      opacity: .15;
+      top: -80px;
+      left: -60px;
+    }
+
+    .hiw-g2 {
+      width: 280px;
+      height: 280px;
+      background: #7c3aed;
+      opacity: .18;
+      bottom: -60px;
+      right: -40px;
+    }
+
+    .hiw-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hiw-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .hiw-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .hiw-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 9%;
+      right: 9%;
+      height: 1px;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .hiw-step {
+      text-align: center;
+    }
+
+    .hiw-num {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 1;
+      transition: transform .3s;
+    }
+
+    .hiw-num:hover {
+      transform: scale(1.08);
+    }
+
+    .hn-red {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 0 0 8px rgba(175, 14, 14, .15);
+    }
+
+    .hn-out {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, .25);
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .hiw-step h4 {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: .4rem;
+    }
+
+    .hiw-step p {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .45);
+      line-height: 1.65;
+    }
+
+    .hiw-step-icon {
+      font-size: 1.8rem;
+      margin-bottom: .75rem;
+      display: block;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hiw-step:nth-child(2) .hiw-step-icon {
+      animation-delay: .5s;
+    }
+
+    .hiw-step:nth-child(3) .hiw-step-icon {
+      animation-delay: 1s;
+    }
+
+    .hiw-step:nth-child(4) .hiw-step-icon {
+      animation-delay: 1.5s;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testi-sec {
+      background: #fff9ec;
+      padding: 90px 6%;
+    }
+
+    .testi-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testi-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .testi-head .sec-title {
+      color: var(--blue);
+    }
+
+    .testi-head .sec-sub {
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testi-card {
+      background: #fff;
+      border: 1px solid rgba(3, 53, 121, .09);
+      border-radius: 22px;
+      padding: 1.85rem;
+      transition: all .4s cubic-bezier(.22, 1, .36, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--blue));
+      transform: scaleX(0);
+      transition: transform .4s;
+      transform-origin: left;
+    }
+
+    .testi-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 44px rgba(3, 53, 121, .1);
+    }
+
+    .testi-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .testi-card.feat {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .testi-card.feat::before {
+      background: rgba(255, 255, 255, .2);
+      transform: scaleX(1);
+    }
+
+    .testi-avatar-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(3, 53, 121, .1);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .testi-card.feat .testi-avatar-photo {
+      border-color: rgba(255, 255, 255, .2);
+    }
+
+    .testi-stars {
+      color: #f5c842;
+      font-size: .88rem;
+      margin-bottom: .75rem;
+    }
+
+    .testi-text {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .testi-card.feat .testi-text {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .testi-av {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .av-r {
+      background: rgba(175, 14, 14, .1);
+      color: var(--red);
+      border: 1px solid rgba(175, 14, 14, .2);
+    }
+
+    .av-g {
+      background: rgba(5, 150, 105, .1);
+      color: #059669;
+      border: 1px solid rgba(5, 150, 105, .2);
+    }
+
+    .testi-card.feat .testi-av {
+      background: rgba(255, 255, 255, .2);
+      color: #fff;
+      border-color: rgba(255, 255, 255, .3);
+    }
+
+    .testi-name {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .testi-card.feat .testi-name {
+      color: #fff;
+    }
+
+    .testi-role {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    .testi-card.feat .testi-role {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    /* ── PRESS STRIP ── */
+    .press-sec {
+      background: #fff;
+      padding: 60px 6%;
+      border-top: 1px solid var(--border);
+    }
+
+    .press-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .press-lbl {
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .press-logos {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .press-logo {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: rgba(0, 0, 0, .25);
+      transition: color .3s;
+      cursor: default;
+    }
+
+    .press-logo:hover {
+      color: var(--blue);
+    }
+
+    /* ── CTA ── */
+    .cta-sec {
+      background: #1a0533;
+      padding: 100px 6%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+    }
+
+    .cb1 {
+      width: 450px;
+      height: 450px;
+      background: rgba(175, 14, 14, .2);
+      top: -150px;
+      left: -60px;
+    }
+
+    .cb2 {
+      width: 350px;
+      height: 350px;
+      background: rgba(124, 58, 237, .25);
+      bottom: -80px;
+      right: -60px;
+    }
+
+    .cb3 {
+      width: 200px;
+      height: 200px;
+      background: rgba(3, 53, 121, .3);
+      top: 35%;
+      left: 42%;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .cta-sec h2 {
+      font-size: clamp(2.2rem, 4.2vw, 3.5rem);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: .85rem;
+    }
+
+    .cta-sec p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, .62);
+      margin-bottom: 2.2rem;
+      line-height: 1.75;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-bottom-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .45);
+    }
+
+    .cta-bottom-item i {
+      color: rgba(255, 255, 255, .3);
+    }
+
+    /* store btns */
+    .store-btn {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: rgba(255, 255, 255, .08);
+      border: 1.5px solid rgba(255, 255, 255, .2);
+      border-radius: 14px;
+      padding: .75rem 1.2rem;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      min-width: 160px;
+    }
+
+    .store-btn:hover {
+      background: rgba(255, 255, 255, .15);
+      border-color: rgba(255, 255, 255, .45);
+      transform: translateY(-2px);
+    }
+
+    .store-btn-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .store-sub {
+      font-size: .56rem;
+      color: rgba(255, 255, 255, .5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+    }
+
+    .store-name {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      color: #fff;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060b12;
+      color: rgba(255, 255, 255, .55);
+      padding: 65px 6% 28px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      font-size: .85rem;
+      line-height: 1.7;
+      margin-top: .65rem;
+      max-width: 250px;
+    }
+
+    .footer-logo {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: 1.45rem;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
+
+    .flp {
+      width: 25px;
+      height: 25px;
+      background: var(--red);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .footer-logo span {
+      color: var(--red);
+    }
+
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: rgba(175, 14, 14, .15);
+      border: 1px solid rgba(175, 14, 14, .25);
+      border-radius: 50px;
+      padding: .2rem .7rem;
+      font-size: .64rem;
+      color: rgba(175, 14, 14, .9);
+      font-weight: 600;
+      margin-top: .6rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+
+    .soc-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .45);
+      text-decoration: none;
+      font-size: .75rem;
+      transition: all .3s;
+    }
+
+    .soc-btn:hover {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .footer-col h5 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      color: #fff;
+      font-size: .85rem;
+      margin-bottom: .85rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .48rem;
+    }
+
+    .footer-col ul a {
+      color: rgba(255, 255, 255, .45);
+      font-size: .82rem;
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .footer-col ul a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .25);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 1.4rem;
+    }
+
+    .footer-bottom-links a {
+      color: rgba(255, 255, 255, .25);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    /* ── CURSOR GLOW ── */
+    .cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(175, 14, 14, .07), transparent 70%);
+      pointer-events: none;
+      z-index: 9997;
+      transform: translate(-50%, -50%);
+      transition: transform .05s;
+      opacity: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .pp-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .pp-visual {
+        display: none;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .photo-card.tall {
+        grid-row: span 1;
+        height: 240px !important;
+      }
+
+      .photo-card.large {
+        grid-column: span 2;
+      }
+
+      .people-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .people-photos {
+        order: 2;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hiw-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hiw-steps::before {
+        display: none;
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hiw-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card.large,
+      .photo-card.tall {
+        grid-column: span 1;
+        height: 240px !important;
+      }
+    }
+
+    @media(max-width:640px) {
+      nav {
+        padding: 0 4%;
+      }
+
+      .nav-links,
+      .nav-right {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 100px 4% 60px;
+      }
+
+      .testi-grid,
+      .hiw-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .prod-tabs {
+        gap: .25rem;
+      }
+
+      .prod-tab {
+        font-size: .76rem;
+        padding: .5rem .8rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: .7rem;
+        text-align: center;
+      }
+
+      .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .cta-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-bottom {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .people-photos {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .press-inner {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CURSOR GLOW -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="./index.html" class="nav-logo"><img src="./img/logo.png" width="75px" height="50px" alt="" srcset=""></a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#testimonials">Stories</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="index.html" class="nav-tab nt-p">Personal</a>
+      <a href="#" class="nav-tab nt-b">Business</a>
+      <a href="#" class="btn-open">Open Account</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mob-menu" id="mobMenu">
+    <a href="index.html">← Personal</a>
+    <a href="#products">Products</a>
+    <a href="#features">Features</a>
+    <a href="#how">How It Works</a>
+    <a href="#testimonials">Success Stories</a>
+    <a href="#" style="color:var(--red);font-weight:700;border:none;">Open Account →</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-glow hg1"></div>
+    <div class="hero-glow hg2"></div>
+    <div class="hero-glow hg3"></div>
+
+    <div class="hero-left">
+      <div class="hero-badge"><span class="hero-badge-dot"></span> Trusted. Licensed. Built for Business.</div>
+      <h1>Run your business.<br>We'll handle<br>the <em>money.</em></h1>
+      <p class="hero-p">Collect payments, access loans, pay staff, manage expenses, and grow your operations — all from
+        one powerful ComePay Business account.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-red">Open Business Account <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></a>
+        <a href="#products" class="btn-ghost-w">Explore Products</a>
+      </div>
+      <!-- <div class="hero-chips">
+        <div class="chip"><i class="fa-solid fa-lock"></i> NDIC Insured</div>
+        <div class="chip"><i class="fa-solid fa-star"></i> 4.9 Rated</div>
+        <div class="chip"><i class="fa-solid fa-bolt"></i> Instant Settlement</div>
+        <div class="chip"><i class="fa-solid fa-users"></i> 5M+ Businesses</div>
+      </div> -->
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <div class="hero-photo-ring"></div>
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
+          alt="Business owner using ComePay"
+          onerror="this.src='https://images.unsplash.com/photo-1573497491765-dccce02b29df?w=600&q=80'">
+        <!-- Floating UI -->
+        <div class="float-card fc-top-right">
+          <span class="fc-icon"><i class="fa-solid fa-print" style="color:var(--blue)"></i></span>
+          <div><span class="fc-lbl">POS Transactions</span><span class="fc-val">1,248 today</span></div>
+        </div>
+        <div class="float-card fc-bottom-left ppui-dark">
+          <span class="fc-icon"><i class="fa-solid fa-circle-check" style="color:#4ade80"></i></span>
+          <div><span class="fc-lbl">Loan Approved</span><span class="fc-val">₦500,000 ✓</span></div>
+        </div>
+        <div class="float-card fc-mid-right ppui-dark">
+          <span class="fc-icon"><i class="fa-solid fa-money-bill-1-wave" style="color: #fff;"></i></span>
+          <div><span class="fc-lbl">Today's Revenue</span><span class="fc-val">+₦128,500</span></div>
+        </div>
+        <!-- Dashboard mini -->
+        <div class="hero-dash-mini">
+          <div class="hdm-logo"><img src="./img/logo.png" width="30px" height="20px" alt="" srcset=""> <span style="font-size:.55rem;font-weight:400;opacity:.5;">BUSINESS</span></div>
+          <div class="hdm-bal-lbl">Total Balance</div>
+          <div class="hdm-bal">₦4,820,500</div>
+          <div class="hdm-change">↑ +₦320,000 this week</div>
+          <div class="hdm-bars">
+            <div class="hdm-bar" style="height:45%"></div>
+            <div class="hdm-bar" style="height:60%"></div>
+            <div class="hdm-bar" style="height:50%"></div>
+            <div class="hdm-bar act" style="height:75%"></div>
+            <div class="hdm-bar" style="height:65%"></div>
+            <div class="hdm-bar act" style="height:88%"></div>
+            <div class="hdm-bar red" style="height:72%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <section class="stats-sec">
+    <div class="stats-grid">
+      <div class="stat-card reveal stagger-1">
+        <span class="stat-icon"><i class="fa-solid fa-building-columns"></i></span>
+        <span class="stat-n" data-target="5">0<em>M+</em></span>
+        <span class="stat-l">Business Owners</span>
+      </div>
+      <div class="stat-card reveal stagger-2">
+        <span class="stat-icon"><i class="fa-solid fa-sack-dollar"></i></span>
+        <span class="stat-n">₦2.4<em>B+</em></span>
+        <span class="stat-l">Processed Daily</span>
+      </div>
+      <div class="stat-card reveal stagger-3">
+        <span class="stat-icon"><i class="fa-solid fa-bolt"></i></span>
+        <span class="stat-n">99.9<em>%</em></span>
+        <span class="stat-l">Transaction Uptime</span>
+      </div>
+      <div class="stat-card reveal stagger-4">
+        <span class="stat-icon"><i class="fa-solid fa-rocket"></i></span>
+        <span class="stat-n">48<em>hr</em></span>
+        <span class="stat-l">Loan Disbursement</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHOTO SHOWCASE ── -->
+  <section class="showcase-sec">
+    <div class="showcase-inner">
+      <div class="showcase-header reveal">
+        <div class="tag tag-red tag-c">Built for Real Nigerian Businesses</div>
+        <h2 class="sec-title">From the market to the boardroom —<br>ComePay powers them all</h2>
+        <p class="sec-sub">Whether you run a market stall, a restaurant, a tech company or a logistics fleet — ComePay
+          Business gives every business the financial tools they deserve.</p>
+      </div>
+      <div class="photo-grid reveal">
+        <div class="photo-card tall" style="grid-row:span 2;">
+          <img src="./img/2.jpg" alt="POS agent at work"
+            style="height:100%;object-fit:cover;">
+          <div class="photo-card-overlay">
+            <div class="pco-tag">POS Agents</div>
+            <div class="pco-title">Always settling. Always earning.</div>
+            <div class="pco-sub">Instant POS settlement for every transaction</div>
+          </div>
+        </div>
+        <div class="photo-card ph1">
+          <img src="./img/1.jpg" alt="Business meeting">
+          <div class="photo-card-overlay">
+            <div class="pco-tag">Business Banking</div>
+            <div class="pco-title">Free accounts for every business</div>
+            <div class="pco-sub">Zero fees. Zero paperwork.</div>
+          </div>
+        </div>
+        <div class="photo-card ph1">
+          <img src="./img/5.jpg" alt="Retail shop">
+          <div class="photo-card-overlay">
+            <div class="pco-tag">Retail & E-commerce</div>
+            <div class="pco-title">Sell online with your E-Shop</div>
+            <div class="pco-sub">Upload products. Share a link. Get paid.</div>
+          </div>
+        </div>
+        <div class="photo-card ph1">
+          <img src="./img/4.jpg" alt="Entrepreneur">
+          <div class="photo-card-overlay">
+            <div class="pco-tag">Working Capital Loans</div>
+            <div class="pco-title">Get funded in 48 hours</div>
+            <div class="pco-sub">No collateral. No branch visit.</div>
+          </div>
+        </div>
+        <div class="photo-card ph1">
+          <img src="./img/6.jpg" alt="Team working">
+          <div class="photo-card-overlay">
+            <div class="pco-tag">Payroll & Teams</div>
+            <div class="pco-title">Pay 500 staff in one click</div>
+            <div class="pco-sub">Bulk payroll, role management & more</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BRANDS ── -->
+  <div class="brands-sec">
+    <div class="brands-lbl">Join businesses that count on ComePay</div>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/gotv.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/ikeja.png" width="120px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/waec.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/airtel.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/dstv.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/9mobile.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/glo.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <!-- duplicated for loop -->
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/gotv.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/ikeja.png" width="120px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/waec.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/airtel.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/dstv.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/9mobile.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+        <div class="brand-item">
+          <div class="brand-logo"><img src="./img/glo.png" width="100px" height="70px" alt="" srcset=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRODUCTS ── -->
+  <div class="prod-heading-band" id="products">
+    <div class="phb-glow phb-g1"></div>
+    <div class="phb-glow phb-g2"></div>
+    <div class="phb-inner">
+      <div class="tag tag-white tag-c" style="margin-bottom:.75rem;">All Business Products</div>
+      <h2 class="sec-title">Everything your business needs.<br>All in one platform.</h2>
+      <p class="sec-sub">From POS terminals to working capital loans — ComePay has every financial tool your business
+        needs to thrive.</p>
+      <div class="prod-tabs">
+        <button class="prod-tab active" onclick="switchTab(0)"><i class="fa-solid fa-print"></i> POS Terminal</button>
+        <button class="prod-tab" onclick="switchTab(1)"><i class="fa-solid fa-building-columns"></i> Business
+          Account</button>
+        <button class="prod-tab" onclick="switchTab(2)"><i class="fa-solid fa-piggy-bank"></i> Capital Loans</button>
+        <button class="prod-tab" onclick="switchTab(3)"><i class="fa-solid fa-credit-card"></i> Expense Card</button>
+        <button class="prod-tab" onclick="switchTab(4)"><i class="fa-solid fa-chart-pie"></i> Business Savings</button>
+        <button class="prod-tab" onclick="switchTab(5)"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 0: POS — deep blue -->
+  <div class="prod-panel pp-0 active" id="panel-0">
+    <div class="pp-wrap">
+      <div class="pp-blob pb-r" style="width:300px;height:300px;top:-80px;right:-40px;background:rgba(175,14,14,.3);">
+      </div>
+      <div class="pp-inner">
+        <div class="pp-text">
+          <div class="tag tag-white">Point of Sale Terminal</div>
+          <h3>POS machine that<br>never lets you down.</h3>
+          <p>Accept card and transfer payments seamlessly. Enjoy instant settlement, automatic dispute resolution, and
+            real-time transaction tracking — right in your pocket.</p>
+          <ul class="pp-feats">
+            <li>
+              <div class="fdot fd-r">✓</div>Instant settlement — money hits your account in seconds
+            </li>
+            <li>
+              <div class="fdot fd-r">✓</div>Accept card, NFC, QR, and bank transfer payments
+            </li>
+            <li>
+              <div class="fdot fd-r">✓</div>24/7 support and automatic dispute resolution
+            </li>
+            <li>
+              <div class="fdot fd-r">✓</div>Free POS terminal for qualifying businesses
+            </li>
+            <li>
+              <div class="fdot fd-r">✓</div>Cashback rewards on every POS transaction
+            </li>
+            <li>
+              <div class="fdot fd-r">✓</div>Detailed sales reports and daily reconciliation
+            </li>
+          </ul>
+          <div class="pp-actions">
+            <a href="#" class="btn-panel" style="background:var(--red);">Get Your POS Terminal <svg width="13"
+                height="13" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+            <a href="#" class="btn-link-w">Learn more <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="pp-visual">
+          <div class="pp-photo-wrap">
+            <img class="pp-photo" src="./img/7.jpg"
+              alt="POS terminal in use">
+            <div class="pp-ui-overlay pp-ui-top">
+              <span class="ppui-icon"><i class="fa-solid fa-bolt" style="color:#0891b2"></i></span>
+              <div><span class="ppui-lbl">Settlement Time</span><span class="ppui-val">Instant ✓</span></div>
+            </div>
+            <div class="pp-ui-overlay pp-ui-bottom" style="background:var(--red);">
+              <span class="ppui-icon"><i class="fa-brands fa-cc-mastercard" style="color: #fff;"></i></span>
+              <div class="ppui-dark"><span class="ppui-lbl">Today's POS Revenue</span><span
+                  class="ppui-val">₦128,500</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 1: Business Account — deep purple -->
+  <div class="prod-panel pp-1" id="panel-1">
+    <div class="pp-wrap">
+      <div class="pp-blob" style="width:280px;height:280px;top:-60px;right:-40px;background:rgba(124,58,237,.4);"></div>
+      <div class="pp-inner">
+        <div class="pp-text">
+          <div class="tag tag-white">Business Account</div>
+          <h3>A free bank account<br>to power your business.</h3>
+          <p>Open a free business current account in your company name in minutes. Get a dedicated account number, full
+            CBN-backed banking, and round-the-clock support — with zero hidden fees.</p>
+          <ul class="pp-feats">
+            <li>
+              <div class="fdot fd-p">✓</div>Free business current account — no maintenance fees
+            </li>
+            <li>
+              <div class="fdot fd-p">✓</div>Dedicated business account number issued instantly
+            </li>
+            <li>
+              <div class="fdot fd-p">✓</div>Multi-user access with role-based permissions
+            </li>
+            <li>
+              <div class="fdot fd-p">✓</div>Bulk salary and vendor payment disbursement
+            </li>
+            <li>
+              <div class="fdot fd-p">✓</div>USSD banking with *5573# for offline access
+            </li>
+            <li>
+              <div class="fdot fd-p">✓</div>Real-time notifications on all transactions
+            </li>
+          </ul>
+          <div class="pp-actions">
+            <a href="#" class="btn-panel" style="background:#7c3aed;">Open Business Account <svg width="13" height="13"
+                viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+            <a href="#" class="btn-link-w">Learn more <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="pp-visual">
+          <div class="pp-photo-wrap">
+            <img class="pp-photo" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80"
+              alt="Business banking">
+            <div class="pp-ui-overlay pp-ui-top">
+              <span class="ppui-icon"><i class="fa-solid fa-building-columns" style="color: purple"></i></span>
+              <div><span class="ppui-lbl">Account Status</span><span class="ppui-val" style="color:#10b981">●
+                  Active</span></div>
+            </div>
+            <div class="pp-ui-overlay pp-ui-bottom" style="background:#7c3aed;">
+              <span class="ppui-icon"><i class="fa-solid fa-people-group" style="color: #fff;"></i></span>
+              <div class="ppui-dark"><span class="ppui-lbl">Team Members</span><span class="ppui-val">8 Users
+                  Active</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 2: Loans — deep red/gold -->
+  <div class="prod-panel pp-2" id="panel-2">
+    <div class="pp-wrap">
+      <div class="pp-blob"
+        style="width:300px;height:300px;top:-80px;left:-60px;background:rgba(175,14,14,.4);opacity:.5;"></div>
+      <div class="pp-inner">
+        <div class="pp-text">
+          <div class="tag tag-white">Working Capital Loans</div>
+          <h3>Flexible loans that help<br>your business grow.</h3>
+          <p>Access working capital loans to keep your business running. Quick application, fast approval, and
+            business-friendly repayment terms — no collateral required for qualifying businesses.</p>
+          <ul class="pp-feats">
+            <li>
+              <div class="fdot fd-o">✓</div>Loans from ₦50,000 up to ₦10,000,000
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Approval and disbursement within 48 hours
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Competitive interest rates from 1.5% per month
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Flexible repayment: 1–12 months tenure
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>No collateral required for eligible businesses
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Repeat loans with improved limits on good repayment
+            </li>
+          </ul>
+          <div class="pp-actions">
+            <a href="#" class="btn-panel" style="background:#d97706;">Apply for a Loan <svg width="13" height="13"
+                viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+            <a href="#" class="btn-link-w">Check eligibility <svg width="12" height="12" viewBox="0 0 16 16"
+                fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="pp-visual">
+          <div class="pp-photo-wrap">
+            <img class="pp-photo" src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=700&q=80"
+              alt="Business loan">
+            <div class="pp-ui-overlay pp-ui-top">
+              <span class="ppui-icon"><i class="fa-solid fa-circle-check" style="color: green;"></i></span>
+              <div><span class="ppui-lbl">Loan Approved</span><span class="ppui-val">₦500,000</span></div>
+            </div>
+            <div class="pp-ui-overlay pp-ui-bottom" style="background:#d97706;">
+              <span class="ppui-icon"><i class="fa-solid fa-clock" style="color: #fff;"></i></span>
+              <div class="ppui-dark"><span class="ppui-lbl">Disbursement Time</span><span class="ppui-val">Under 48
+                  hours</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 3: Expense Card — dark green -->
+  <div class="prod-panel pp-3" id="panel-3">
+    <div class="pp-wrap">
+      <div class="pp-blob"
+        style="width:280px;height:280px;top:-60px;right:-40px;background:rgba(5,150,105,.4);opacity:.4;"></div>
+      <div class="pp-inner">
+        <div class="pp-text">
+          <div class="tag tag-white">Business Expense Card</div>
+          <h3>A secure card for all<br>your business expenses.</h3>
+          <p>Order physical or virtual business expense cards for you and your team. Set individual spending limits per
+            card, track all expenses in real time, and get detailed monthly reports.</p>
+          <ul class="pp-feats">
+            <li>
+              <div class="fdot fd-g">✓</div>Physical card delivered in 48 hours, virtual instant
+            </li>
+            <li>
+              <div class="fdot fd-g">✓</div>Set custom spending limits per card or category
+            </li>
+            <li>
+              <div class="fdot fd-g">✓</div>Accepted everywhere — Visa / Mastercard network
+            </li>
+            <li>
+              <div class="fdot fd-g">✓</div>Freeze or unfreeze any card in real time
+            </li>
+            <li>
+              <div class="fdot fd-g">✓</div>Automatic expense categorization & monthly reports
+            </li>
+            <li>
+              <div class="fdot fd-g">✓</div>USD virtual card for international purchases
+            </li>
+          </ul>
+          <div class="pp-actions">
+            <a href="#" class="btn-panel" style="background:#059669;">Order Expense Card <svg width="13" height="13"
+                viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+            <a href="#" class="btn-link-w">Learn more <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="pp-visual">
+          <div class="pp-photo-wrap">
+            <img class="pp-photo" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=700&q=80"
+              alt="Business expense card">
+            <div class="pp-ui-overlay pp-ui-top">
+              <span class="ppui-icon"><i class="fa-solid fa-credit-card" style="color:var(--blue)"></i></span>
+              <div><span class="ppui-lbl">Card Status</span><span class="ppui-val" style="color:#10b981">● Active</span>
+              </div>
+            </div>
+            <div class="pp-ui-overlay pp-ui-bottom" style="background:#059669;">
+              <span class="ppui-icon"><i class="fa-solid fa-lock" style="color: #fff;"></i></span>
+              <div class="ppui-dark"><span class="ppui-lbl">Spending Limit</span><span class="ppui-val">₦200,000 /
+                  mo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 4: Savings -->
+  <div class="prod-panel pp-4" id="panel-4">
+    <div class="pp-wrap">
+      <div class="pp-blob"
+        style="width:300px;height:300px;top:-80px;right:-60px;background:rgba(217,119,6,.3);opacity:.4;"></div>
+      <div class="pp-inner">
+        <div class="pp-text">
+          <div class="tag tag-white" style="color:#fbbf24;">Business Savings</div>
+          <h3>Grow your reserves.<br>Earn while you save.</h3>
+          <p>Whether saving for equipment, expansion, or an emergency fund — create a dedicated savings plan and earn up
+            to 12% interest per annum. Your money works even when you don't.</p>
+          <ul class="pp-feats">
+            <li>
+              <div class="fdot fd-o">✓</div>Up to 12% interest per annum on locked savings
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Multiple goal-based savings pockets
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Automated recurring contributions daily/weekly/monthly
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Flexible lock periods: 30, 90, 180, 360 days
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Interest credited monthly to your account
+            </li>
+            <li>
+              <div class="fdot fd-o">✓</div>Emergency break option with reduced interest
+            </li>
+          </ul>
+          <div class="pp-actions">
+            <a href="#" class="btn-panel" style="background:#d97706;">Start Saving <svg width="13" height="13"
+                viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+            <a href="#" class="btn-link-w">Calculate returns <svg width="12" height="12" viewBox="0 0 16 16"
+                fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="pp-visual">
+          <div class="pp-photo-wrap">
+            <img class="pp-photo" src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=700&q=80"
+              alt="Business savings growth">
+            <div class="pp-ui-overlay pp-ui-top">
+              <span class="ppui-icon">📈</span>
+              <div><span class="ppui-lbl">Interest Rate</span><span class="ppui-val">12% p.a.</span></div>
+            </div>
+            <div class="pp-ui-overlay pp-ui-bottom" style="background:#d97706;">
+              <span class="ppui-icon">🎯</span>
+              <div class="ppui-dark"><span class="ppui-lbl">Goal Progress</span><span class="ppui-val">68% complete
+                  ↑</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 5: Analytics -->
+  <div class="prod-panel pp-5" id="panel-5">
+    <div class="pp-wrap">
+      <div class="pp-blob"
+        style="width:280px;height:280px;top:-70px;right:-50px;background:rgba(234,88,12,.3);opacity:.4;"></div>
+      <div class="pp-inner">
+        <div class="pp-text">
+          <div class="tag tag-white">Analytics & Reports</div>
+          <h3>Smart insights to run<br>your business better.</h3>
+          <p>Get a complete picture of your business finances with real-time dashboards, automated reconciliation,
+            profit/loss statements, and exportable reports — all inside your app.</p>
+          <ul class="pp-feats">
+            <li>
+              <div class="fdot fd-t">✓</div>Real-time revenue and expense dashboards
+            </li>
+            <li>
+              <div class="fdot fd-t">✓</div>Automated daily, weekly and monthly reconciliation
+            </li>
+            <li>
+              <div class="fdot fd-t">✓</div>Profit & loss statements generated automatically
+            </li>
+            <li>
+              <div class="fdot fd-t">✓</div>Export reports to CSV, PDF, or Excel
+            </li>
+            <li>
+              <div class="fdot fd-t">✓</div>Inventory and stock tracking (POS-linked)
+            </li>
+            <li>
+              <div class="fdot fd-t">✓</div>Tax-ready reports for easy filing
+            </li>
+          </ul>
+          <div class="pp-actions">
+            <a href="#" class="btn-panel" style="background:#ea580c;">Get Started <svg width="13" height="13"
+                viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+            <a href="#" class="btn-link-w">View demo <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="pp-visual">
+          <div class="pp-photo-wrap">
+            <img class="pp-photo" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80"
+              alt="Business analytics dashboard">
+            <div class="pp-ui-overlay pp-ui-top">
+              <span class="ppui-icon"><i class="fa-solid fa-chart-pie" style="color: brown;"></i></span>
+              <div><span class="ppui-lbl">Revenue This Month</span><span class="ppui-val" style="color:#10b981">+18%
+                  ↑</span></div>
+            </div>
+            <div class="pp-ui-overlay pp-ui-bottom" style="background:#ea580c;">
+              <span class="ppui-icon"><i class="fa-regular fa-file" style="color: #fff;"></i></span>
+              <div class="ppui-dark"><span class="ppui-lbl">Reports Ready</span><span class="ppui-val">Export to PDF /
+                  Excel</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FEATURES GRID ── -->
+  <section class="features-sec" id="features">
+    <div class="features-inner">
+      <div class="features-header reveal">
+        <div class="tag tag-red tag-c">All Features Included</div>
+        <h2 class="sec-title">More features.<br>Zero extra cost.</h2>
+        <p class="sec-sub">Every ComePay Business account comes packed with tools to help you collect, save, spend and
+          grow — all included from day one.</p>
+      </div>
+      <div class="feat-divider reveal">
+        <div class="fd-line"></div>
+        <div class="fd-text">Core banking & payment features</div>
+        <div class="fd-line"></div>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card fc-blue reveal stagger-1">
+          <div class="fc-icon fci-blue"><i class="fa-solid fa-credit-card" style="color:var(--blue)"></i></div>
+          <h4>ATM Cards</h4>
+          <p>Physical debit cards for your business account. Withdraw and pay at any ATM or POS nationwide.</p>
+        </div>
+        <div class="feat-card fc-green reveal stagger-2">
+          <div class="fcb-hot fc-badge">Hot</div>
+          <div class="fc-icon fci-green"><i class="fa-solid fa-globe" style="color:#059669"></i></div>
+          <h4>Virtual Dollar Card</h4>
+          <p>Instant USD virtual card for international subscriptions, supplier payments, and online purchases.</p>
+        </div>
+        <div class="feat-card fc-purple reveal stagger-3">
+          <div class="fc-icon fci-purple"><i class="fa-solid fa-qrcode" style="color:#7c3aed"></i></div>
+          <h4>QR Payment</h4>
+          <p>Generate a unique QR code for your business. Customers scan and pay instantly — no POS hardware needed.</p>
+        </div>
+        <div class="feat-card fc-blue reveal stagger-4">
+          <div class="fc-icon fci-blue"><i class="fa-solid fa-users" style="color:var(--blue)"></i></div>
+          <h4>Payroll & Bulk Transfer</h4>
+          <p>Pay up to 500 employees in a single click. Schedule recurring payroll with full auto-records.</p>
+        </div>
+        <div class="feat-card fc-teal reveal stagger-1">
+          <div class="fcb-new fc-badge">New</div>
+          <div class="fc-icon fci-teal"><i class="fa-solid fa-store" style="color:#0891b2"></i></div>
+          <h4>E-Shop</h4>
+          <p>Upload products and sell online instantly. Share your store link, receive orders, collect payments — all
+            in-app.</p>
+        </div>
+        <div class="feat-card fc-gold reveal stagger-2">
+          <div class="fc-icon fci-gold"><i class="fa-solid fa-file-invoice" style="color:#d97706"></i></div>
+          <h4>Invoice</h4>
+          <p>Create professional invoices in seconds. Track payment status, send reminders, accept payment directly.</p>
+        </div>
+        <div class="feat-card fc-red reveal stagger-3">
+          <div class="fc-icon fci-red"><i class="fa-solid fa-gift" style="color:var(--red)"></i></div>
+          <h4>Cashback & Referrals</h4>
+          <p>Earn cashback on every transaction and POS settlement. Refer businesses for bonus rewards.</p>
+        </div>
+        <div class="feat-card fc-orange reveal stagger-4">
+          <div class="fc-icon fci-orange"><i class="fa-solid fa-chart-pie" style="color:#ea580c"></i></div>
+          <h4>Budgeting & Expenses</h4>
+          <p>Set monthly budgets per department. Get alerts when limits approach with full expense breakdowns.</p>
+        </div>
+        <div class="feat-card fc-purple reveal stagger-1">
+          <div class="fcb-new fc-badge">New</div>
+          <div class="fc-icon fci-purple"><i class="fa-solid fa-sim-card" style="color:#7c3aed"></i></div>
+          <h4>E-SIM (Intl. Airtime)</h4>
+          <p>Buy international data and airtime directly from the app. Stay connected abroad without roaming fees.</p>
+        </div>
+        <div class="feat-card fc-blue reveal stagger-2">
+          <div class="fc-icon fci-blue"><i class="fa-solid fa-user-tie" style="color:var(--blue)"></i></div>
+          <h4>Team Management</h4>
+          <p>Assign Admin, Accountant, Viewer roles. Control who approves payments, views reports, or manages cards.</p>
+        </div>
+        <div class="feat-card fc-teal reveal stagger-3">
+          <div class="fc-icon fci-teal"><i class="fa-solid fa-bolt" style="color:#0891b2"></i></div>
+          <h4>Bill Payments</h4>
+          <p>Pay electricity, internet, cable TV, and government levies with auto-scheduling support built in.</p>
+        </div>
+        <div class="feat-card fc-green reveal stagger-4">
+          <div class="fc-icon fci-green"><i class="fa-solid fa-money-bill-transfer" style="color:#059669"></i></div>
+          <h4>Multicurrency Transfers</h4>
+          <p>Send and receive in USD, GBP, EUR and 30+ currencies. Pay overseas suppliers at interbank rates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PEOPLE SECTION ── -->
+  <section class="people-sec">
+    <div class="people-inner">
+      <div class="people-photos reveal-l">
+        <div class="people-photo tall">
+          <img src="./img/8.jpg" alt="Business owner">
+          <!-- <div class="people-photo-badge">
+            <div class="ppb-name">Amara O.</div>
+            <div class="ppb-role">Fashion Retailer, Lagos</div>
+          </div> -->
+        </div>
+        <div class="people-photo">
+          <img src="./img/9.jpg" alt="Entrepreneur">
+          <!-- <div class="people-photo-badge">
+            <div class="ppb-name">Emeka D.</div>
+            <div class="ppb-role">POS Agent, Abuja</div>
+          </div> -->
+        </div>
+        <div class="people-photo">
+          <img src="./img/10.jpg" alt="Small business owner">
+          <!-- <div class="people-photo-badge">
+            <div class="ppb-name">Bisi A.</div>
+            <div class="ppb-role">Restaurant Owner, PH</div>
+          </div> -->
+        </div>
+        <div class="people-photo">
+          <img src="./img/11.jpg" alt="Tech entrepreneur">
+          <!-- <div class="people-photo-badge">
+            <div class="ppb-name">Chidi N.</div>
+            <div class="ppb-role">Tech Startup, Enugu</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="people-text reveal-r">
+        <div class="tag tag-white">Trusted Across Nigeria</div>
+        <h2 class="sec-title" style="color:#fff;">5 million businesses<br>already growing<br>with <em
+            style="font-style:normal;color:var(--red);">ComePay.</em></h2>
+        <p class="sec-sub" style="color:rgba(255,255,255,.58);">From market traders in Lagos to tech startups in Abuja —
+          business owners of every size trust ComePay to manage their money, collect payments, and access credit when
+          they need it most.</p>
+        <div class="people-stats">
+          <div class="pstat"><span class="pstat-num">5<em>M+</em></span><span class="pstat-lbl">Active Businesses</span>
+          </div>
+          <div class="pstat"><span class="pstat-num">₦2.4<em>B</em></span><span class="pstat-lbl">Processed Daily</span>
+          </div>
+          <div class="pstat"><span class="pstat-num">4.9<em>★</em></span><span class="pstat-lbl">App Store Rating</span>
+          </div>
+        </div>
+        <a href="#" class="btn-red">Join 5 million businesses <svg width="14" height="14" viewBox="0 0 16 16"
+            fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HIW ── -->
+  <section class="hiw-sec" id="how">
+    <div class="hiw-glow hiw-g1"></div>
+    <div class="hiw-glow hiw-g2"></div>
+    <div class="hiw-inner">
+      <div class="hiw-head reveal">
+        <div>
+          <div class="tag tag-white">Getting Started</div>
+          <h2 class="sec-title" style="color:#fff;">Up and running<br>in minutes</h2>
+        </div>
+        <p class="sec-sub" style="color:rgba(255,255,255,.5);">No paperwork. No branch visits. Open your account and
+          start growing your business today.</p>
+      </div>
+      <div class="hiw-steps reveal">
+        <div class="hiw-step">
+          <span class="hiw-step-icon"><i class="fa-solid fa-file-pen" style="color: #ffffffb8;"></i></span>
+          <div class="hiw-num hn-red">01</div>
+          <h4>Register Your Business</h4>
+          <p>Sign up with your business name, RC number, and BVN in under 5 minutes online.</p>
+        </div>
+        <div class="hiw-step">
+          <span class="hiw-step-icon"><i class="fa-solid fa-circle-check" style="color: #ffffffb8;"></i></span>
+          <div class="hiw-num hn-out">02</div>
+          <h4>Verify & Get Approved</h4>
+          <p>Upload CAC documents and complete KYC. Approval typically within 24 hours.</p>
+        </div>
+        <div class="hiw-step">
+          <span class="hiw-step-icon"><i class="fa-solid fa-sack-dollar" style="color: #ffffffb8;"></i></span>
+          <div class="hiw-num hn-out">03</div>
+          <h4>Fund Your Account</h4>
+          <p>Transfer funds into your ComePay Business account. Account number ready instantly.</p>
+        </div>
+        <div class="hiw-step">
+          <span class="hiw-step-icon"><i class="fa-solid fa-rocket" style="color: #ffffffb8;"></i></span>
+          <div class="hiw-num hn-red">04</div>
+          <h4>Start Transacting</h4>
+          <p>Accept payments, request loans, pay staff, manage finances — all in one place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="testi-sec" id="testimonials">
+    <div class="testi-inner">
+      <div class="testi-head reveal">
+        <div class="tag tag-red tag-c">Success Stories</div>
+        <h2 class="sec-title">Don't just take our word for it.</h2>
+        <p class="sec-sub">Real business owners. Real results. Real money.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal stagger-1">
+          <img class="testi-avatar-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+            alt="Joseph Eze">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I was robbed and needed money to restock my shop urgently. Within 48 hours I had
+            ₦500,000 in my account from ComePay. They literally saved my business."</p>
+          <div class="testi-author">
+            <div class="testi-av av-r">MJ</div>
+            <div>
+              <div class="testi-name">Mr. Joseph Eze</div>
+              <div class="testi-role">Supermarket Owner, Lagos</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card feat reveal stagger-2">
+          <img class="testi-avatar-photo" src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?w=100&q=80"
+            alt="Adeola Okonkwo" style="border-color:rgba(255,255,255,.2)">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The POS terminal never fails me. Instant settlement means I always know exactly what I
+            earned each day. ComePay is the best decision I ever made for my business."</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3);">
+              AO</div>
+            <div>
+              <div class="testi-name">Adeola Okonkwo</div>
+              <div class="testi-role">POS Agent & Logistics, Abuja</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal stagger-3">
+          <img class="testi-avatar-photo" src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=100&q=80"
+            alt="Funmi Kolade">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The analytics dashboard shows me everything — which products sell most, when revenue
+            peaks. My profit margin has increased by 40% in just 8 months. Incredible."</p>
+          <div class="testi-author">
+            <div class="testi-av av-g">FK</div>
+            <div>
+              <div class="testi-name">Funmi Kolade</div>
+              <div class="testi-role">Fashion Retailer, Port Harcourt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRESS ── -->
+  <!-- <div class="press-sec">
+    <div class="press-inner">
+      <div class="press-lbl">As seen in</div>
+      <div class="press-logos">
+        <div class="press-logo">TechCabal</div>
+        <div class="press-logo">BusinessDay</div>
+        <div class="press-logo">Nairametrics</div>
+        <div class="press-logo">Techpoint</div>
+        <div class="press-logo">The Punch</div>
+        <div class="press-logo">Vanguard</div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- ── CTA ── -->
+  <section class="cta-sec" id="contact">
+    <div class="cta-blob cb1"></div>
+    <div class="cta-blob cb2"></div>
+    <div class="cta-blob cb3"></div>
+    <div class="cta-inner reveal">
+      <div class="tag tag-white tag-c" style="margin-bottom:.85rem;">Start Today — It's Free</div>
+      <h2>Your business deserves<br>better banking.</h2>
+      <p>Join 5 million business owners who trust ComePay to power their payments, manage their finances, and grow their
+        operations every single day.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-red">Open Free Business Account</a>
+        <a href="#" class="btn-ghost-w">📞 Talk to a Business Advisor</a>
+      </div>
+      <div style="display:flex;justify-content:center;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+        <a href="#" class="store-btn">
+          <div class="store-btn-icon"><img src="./img/apple.png" height="40px" width="40px" alt="" srcset=""></div>
+          <div><span class="store-sub">Download on the</span><span class="store-name">App Store</span></div>
+        </a>
+        <a href="#" class="store-btn">
+          <div class="store-btn-icon"><img src="./img/play.png" width="40px" height="40px" alt="" srcset=""></div>
+          <div><span class="store-sub">Get it on</span><span class="store-name">Google Play</span></div>
+        </a>
+      </div>
+      <!-- <div class="cta-bottom">
+        <div class="cta-bottom-item"><i class="fa-solid fa-shield-halved"></i> CBN Licensed & Regulated</div>
+        <div class="cta-bottom-item"><i class="fa-solid fa-lock"></i> 256-bit SSL Encryption</div>
+        <div class="cta-bottom-item"><i class="fa-solid fa-star"></i> 4.9/5 on App Store</div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">
+            <img src="./img/logo.png" width="75px" height="50px" alt="" srcset="">
+          </a>
+          <p>Nigeria's most trusted digital finance platform for businesses. Powering payments, credit, and growth
+            across Africa.</p>
+          <!-- <div class="footer-badge">🏦 CBN Licensed · NDIC Insured</div> -->
+          <div class="footer-social">
+            <a href="#" class="soc-btn">𝕏</a><a href="#" class="soc-btn">in</a>
+            <a href="#" class="soc-btn">f</a><a href="#" class="soc-btn">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Business Products</h5>
+          <ul>
+            <li><a href="#">POS Terminal</a></li>
+            <li><a href="#">Business Account</a></li>
+            <li><a href="#">Working Capital Loans</a></li>
+            <li><a href="#">Expense Cards</a></li>
+            <li><a href="#">Business Savings</a></li>
+            <li><a href="#">Analytics & Reports</a></li>
+            <li><a href="#">E-Shop & Invoice</a></li>
+            <li><a href="#">Payroll & Bulk Pay</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 ComePay Technologies Ltd. RC: 1234567. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+    // Hamburger
+    const hb = document.getElementById('hamburger');
+    const mm = document.getElementById('mobMenu');
+    hb.addEventListener('click', () => { hb.classList.toggle('active'); mm.classList.toggle('open'); });
+    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hb.classList.remove('active'); mm.classList.remove('open'); }));
+
+    // Product tabs with smooth transition
+    const tabs = document.querySelectorAll('.prod-tab');
+    const panels = document.querySelectorAll('.prod-panel');
+    function switchTab(index) {
+      tabs.forEach((t, i) => t.classList.toggle('active', i === index));
+      panels.forEach((p, i) => {
+        if (i === index) {
+          p.classList.add('active');
+          p.style.opacity = '0';
+          p.style.transform = 'translateY(24px)';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              p.style.transition = 'opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1)';
+              p.style.opacity = '1';
+              p.style.transform = 'translateY(0)';
+            });
+          });
+        } else {
+          p.classList.remove('active');
+          p.style.transition = '';
+          p.style.opacity = '';
+          p.style.transform = '';
+        }
+      });
+      // Scroll to products section
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Scroll reveal with IntersectionObserver
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          ro.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => ro.observe(el));
+
+    // Cursor glow effect
+    const cursorGlow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      cursorGlow.style.opacity = '1';
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
+
+    // 3D tilt on cards
+    document.querySelectorAll('.stat-card,.testi-card,.feat-card,.photo-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - 0.5) * 8;
+        const ry = (0.5 - (e.clientX - r.left) / r.width) * 8;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px) scale(1.01)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+    // Animated stat counters
+    const statNums = document.querySelectorAll('.stat-n[data-target]');
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          let start = 0;
+          const duration = 1800;
+          const step = timestamp => {
+            if (!start) start = timestamp;
+            const progress = Math.min((timestamp - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            el.innerHTML = (ease * target).toFixed(0) + '<em>M+</em>';
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNums.forEach(el => counterObserver.observe(el));
+
+    // Photo card hover parallax
+    document.querySelectorAll('.pp-photo').forEach(img => {
+      const wrap = img.closest('.pp-photo-wrap');
+      if (!wrap) return;
+      wrap.addEventListener('mousemove', e => {
+        const r = wrap.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        img.style.transform = `scale(1.05) translate(${x * 8}px, ${y * 8}px)`;
+      });
+      wrap.addEventListener('mouseleave', () => { img.style.transform = ''; });
+    });
+
+    // Smooth entrance for hero photo ring
+    setTimeout(() => {
+      const ring = document.querySelector('.hero-photo-ring');
+      if (ring) ring.style.opacity = '1';
+    }, 1200);
+
+    // People photos stagger
+    document.querySelectorAll('.people-photo').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              el.style.transition = 'opacity .6s ease, transform .6s ease';
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+            }, i * 120);
+            obs.unobserve(el);
+          }
+        });
+      }, { threshold: 0.1 });
+      obs.observe(el);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,3905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComePay Multicurrency — One Wallet. Every Currency.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+    <style>
+        :root {
+            --red: #af0e0e;
+            --red-l: #d41212;
+            --red-d: #8a0b0b;
+            --blue: #033579;
+            --blue-l: #0549a8;
+            --blue-d: #022660;
+            --white: #fff;
+            --text: #0d0d0d;
+            --muted: #6b7280;
+            --border: rgba(3, 53, 121, 0.1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "Poppins", sans-serif;
+            line-height: 1.1;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeL {
+            from {
+                opacity: 0;
+                transform: translateX(44px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeR {
+            from {
+                opacity: 0;
+                transform: translateX(-44px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+
+        @keyframes floatR {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-1.5deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(1deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .4;
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rateFlash {
+
+            0%,
+            100% {
+                color: inherit;
+            }
+
+            40% {
+                color: #10b981;
+            }
+        }
+
+        @keyframes ping {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            75%,
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes gradMove {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        ;
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes barRise {
+            from {
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+
+            to {
+                transform: scaleY(1);
+                transform-origin: bottom;
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(.6);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            transition: all .4s;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(24px);
+            box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(0, 0, 0, .06);
+        }
+
+        .nav-logo {
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .nav-pip {
+            width: 28px;
+            height: 28px;
+            background: var(--red);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .nav-logo span {
+            color: var(--red);
+        }
+
+        nav.scrolled .nav-logo {
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: .88rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .82);
+            text-decoration: none;
+            transition: color .3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--red);
+            transform: scaleX(0);
+            transition: transform .3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--text);
+        }
+
+        nav.scrolled .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .btn-nav {
+            padding: .48rem 1.3rem;
+            border-radius: 50px;
+            background: var(--red);
+            border: none;
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: .84rem;
+            cursor: pointer;
+            transition: all .3s;
+            text-decoration: none;
+        }
+
+        .btn-nav:hover {
+            background: var(--red-l);
+            box-shadow: 0 4px 16px rgba(175, 14, 14, .4);
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 23px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all .3s;
+        }
+
+        nav.scrolled .hamburger span {
+            background: var(--text);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mob-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 1.5rem 5%;
+            flex-direction: column;
+            gap: .8rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .1);
+            z-index: 999;
+        }
+
+        .mob-menu.open {
+            display: flex;
+        }
+
+        .mob-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: .95rem;
+            padding: .45rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── SHARED ── */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: .75rem;
+        }
+
+        .tag::before {
+            content: '';
+            width: 14px;
+            height: 2px;
+            border-radius: 2px;
+        }
+
+        .tag-red {
+            color: var(--red);
+        }
+
+        .tag-red::before {
+            background: var(--red);
+        }
+
+        .tag-white {
+            color: rgba(255, 255, 255, .65);
+        }
+
+        .tag-white::before {
+            background: rgba(255, 255, 255, .4);
+        }
+
+        .tag-green {
+            color: #10b981;
+        }
+
+        .tag-green::before {
+            background: #10b981;
+        }
+
+        .tag-gold {
+            color: #d97706;
+        }
+
+        .tag-gold::before {
+            background: #d97706;
+        }
+
+        .tag-c {
+            justify-content: center;
+        }
+
+        .tag-c::before {
+            display: none;
+        }
+
+        .sec-title {
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 800;
+            line-height: 1.12;
+            margin-bottom: .9rem;
+        }
+
+        .sec-sub {
+            font-size: 1rem;
+            line-height: 1.75;
+            max-width: 520px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .75s cubic-bezier(.22, 1, .36, 1), transform .75s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-l {
+            opacity: 0;
+            transform: translateX(-36px);
+            transition: opacity .75s cubic-bezier(.22, 1, .36, 1), transform .75s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal-l.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-r {
+            opacity: 0;
+            transform: translateX(36px);
+            transition: opacity .75s cubic-bezier(.22, 1, .36, 1), transform .75s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal-r.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .s1 {
+            transition-delay: .1s !important;
+        }
+
+        .s2 {
+            transition-delay: .18s !important;
+        }
+
+        .s3 {
+            transition-delay: .26s !important;
+        }
+
+        .s4 {
+            transition-delay: .34s !important;
+        }
+
+        .btn-primary {
+            padding: .85rem 1.9rem;
+            background: var(--red);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: all .3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--red-l);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(175, 14, 14, .5);
+        }
+
+        .btn-primary svg {
+            transition: transform .3s;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(4px);
+        }
+
+        .btn-outline {
+            padding: .85rem 1.9rem;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .3);
+            border-radius: 50px;
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: all .3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(255, 255, 255, .7);
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .btn-blue {
+            padding: .82rem 1.7rem;
+            background: var(--blue);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .btn-blue:hover {
+            background: var(--blue-l);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(3, 53, 121, .4);
+        }
+
+        .btn-blue svg {
+            transition: transform .3s;
+        }
+
+        .btn-blue:hover svg {
+            transform: translateX(4px);
+        }
+
+        .btn-ghost-dark {
+            padding: .82rem 1.7rem;
+            background: transparent;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            color: var(--blue);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .btn-ghost-dark:hover {
+            border-color: var(--blue);
+            background: rgba(3, 53, 121, .04);
+        }
+
+        /* ── HERO — deep navy ── */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #03081a 0%, #050d24 30%, #0b1d3a 60%, #1a0a2e 100%);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 110px 6% 70px;
+            gap: 3rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+            background-size: 52px 52px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(90px);
+        }
+
+        .hg1 {
+            width: 520px;
+            height: 520px;
+            background: rgba(175, 14, 14, .2);
+            top: -160px;
+            right: -80px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .hg2 {
+            width: 380px;
+            height: 380px;
+            background: rgba(3, 53, 121, .28);
+            bottom: -90px;
+            left: -60px;
+            animation: float 12s 2s ease-in-out infinite;
+        }
+
+        .hg3 {
+            width: 200px;
+            height: 200px;
+            background: rgba(16, 185, 129, .12);
+            top: 50%;
+            left: 44%;
+            animation: float 8s 1s ease-in-out infinite;
+        }
+
+        .hg4 {
+            width: 160px;
+            height: 160px;
+            background: rgba(124, 58, 237, .15);
+            bottom: 20%;
+            right: 10%;
+            animation: float 9s 3s ease-in-out infinite;
+        }
+
+        .hero-left {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 50px;
+            padding: .38rem 1rem;
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .85);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp .8s .1s forwards;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+
+        .hero-badge-dot::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            border: 2px solid #4ade80;
+            animation: ping 2s ease-out infinite;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 5.2vw, 2.4rem);
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            opacity: 0;
+            animation: fadeUp .8s .25s forwards;
+            line-height: 1.1;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .hero h1 .ul {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .ul::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), transparent);
+            border-radius: 2px;
+        }
+
+        .hero-p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, .6);
+            line-height: 1.78;
+            max-width: 460px;
+            margin-bottom: 2.2rem;
+            opacity: 0;
+            animation: fadeUp .8s .4s forwards;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp .8s .55s forwards;
+        }
+
+        .hero-chips {
+            display: flex;
+            gap: .6rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeUp .8s .7s forwards;
+        }
+
+        .chip {
+            padding: .3rem .85rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .14);
+            font-size: .7rem;
+            color: rgba(255, 255, 255, .7);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            transition: all .3s;
+        }
+
+        .chip:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .3);
+        }
+
+        /* Hero right — photo + floating cards */
+        .hero-right {
+            position: relative;
+            z-index: 2;
+            height: 500px;
+            opacity: 0;
+            animation: fadeL .9s .8s forwards;
+        }
+
+        .hero-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px dashed rgba(255, 255, 255, .08);
+            animation: spinSlow 30s linear infinite;
+        }
+
+        .hr1 {
+            width: 380px;
+            height: 380px;
+        }
+
+        .hr2 {
+            width: 480px;
+            height: 480px;
+            animation-direction: reverse;
+            animation-duration: 40s;
+        }
+
+        .hr1::after {
+            content: '🌍';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+        }
+
+        .hr2::after {
+            content: '💱';
+            position: absolute;
+            bottom: 10px;
+            right: 20%;
+            font-size: .9rem;
+        }
+
+        .hero-photo {
+            width: 280px;
+            height: 380px;
+            border-radius: 24px;
+            object-fit: cover;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, .5);
+            animation: floatR 7s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .float-card {
+            position: absolute;
+            border-radius: 16px;
+            padding: .7rem .95rem;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, .3);
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            z-index: 4;
+            white-space: nowrap;
+        }
+
+        .fc1 {
+            top: 30px;
+            right: -10px;
+            background: #fff;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .fc2 {
+            bottom: 50px;
+            left: -24px;
+            background: var(--blue);
+            animation: float 6.5s 1.2s ease-in-out infinite;
+        }
+
+        .fc3 {
+            top: 48%;
+            right: -44px;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #059669, #0d9488);
+            animation: float 7.5s .5s ease-in-out infinite;
+        }
+
+        .fc4 {
+            bottom: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--red-d), var(--red));
+            animation: float 5.5s 2s ease-in-out infinite;
+        }
+
+        .fc-icon {
+            font-size: 1.1rem;
+        }
+
+        .fc-lbl {
+            font-size: .56rem;
+            display: block;
+        }
+
+        .fc-val {
+            font-size: .8rem;
+            font-weight: 700;
+            display: block;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .fc-light .fc-lbl {
+            color: var(--muted);
+        }
+
+        .fc-light .fc-val {
+            color: var(--text);
+        }
+
+        .fc-dark .fc-lbl {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .fc-dark .fc-val {
+            color: #fff;
+        }
+
+        /* Converter card */
+        .conv-float {
+            position: absolute;
+            bottom: -5px;
+            left: -36px;
+            z-index: 5;
+            background: #fff;
+            border-radius: 22px;
+            padding: 1.3rem 1.4rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+            width: 230px;
+            animation: float 6s .9s ease-in-out infinite;
+        }
+
+        .conv-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .conv-title {
+            font-family: "Poppins", sans-serif;
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .conv-live {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            font-size: .6rem;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .conv-live-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        .conv-field {
+            background: #f4f6fb;
+            border-radius: 10px;
+            padding: .65rem .85rem;
+            margin-bottom: .5rem;
+        }
+
+        .conv-field-lbl {
+            font-size: .55rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: .2rem;
+            display: block;
+        }
+
+        .conv-field-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .conv-amount {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .conv-cur {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: .28rem .65rem;
+            font-size: .75rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .conv-swap {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--red), var(--blue));
+            border: none;
+            color: #fff;
+            font-size: .8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: .35rem auto;
+            transition: transform .4s;
+        }
+
+        .conv-swap:hover {
+            transform: rotate(180deg);
+        }
+
+        .conv-rate-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: .65rem;
+            background: rgba(3, 53, 121, .05);
+            border-radius: 8px;
+            padding: .4rem .65rem;
+        }
+
+        .conv-rate-txt {
+            font-size: .66rem;
+            color: var(--muted);
+        }
+
+        .conv-rate-txt strong {
+            color: var(--text);
+        }
+
+        .conv-badge {
+            font-size: .6rem;
+            background: rgba(16, 185, 129, .12);
+            color: #059669;
+            border-radius: 50px;
+            padding: .15rem .55rem;
+            font-weight: 700;
+        }
+
+        /* ── STATS ── */
+        .stats-sec {
+            background: #fdf9f4;
+            border-top: 1px solid rgba(3, 53, 121, .07);
+            border-bottom: 1px solid rgba(3, 53, 121, .07);
+            padding: 52px 6%;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.75rem 1rem;
+            border-radius: 22px;
+            border: 1px solid rgba(3, 53, 121, .09);
+            background: #fff;
+            transition: all .4s cubic-bezier(.22, 1, .36, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            transform: scaleX(0);
+            transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+            transform-origin: left;
+        }
+
+        .sc-red::after {
+            background: linear-gradient(90deg, var(--red), #f87171);
+        }
+
+        .sc-blue::after {
+            background: linear-gradient(90deg, var(--blue), var(--blue-l));
+        }
+
+        .sc-green::after {
+            background: linear-gradient(90deg, #059669, #34d399);
+        }
+
+        .sc-gold::after {
+            background: linear-gradient(90deg, #d97706, #fbbf24);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 40px rgba(3, 53, 121, .12);
+        }
+
+        .stat-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .stat-icon {
+            font-size: 1.7rem;
+            display: block;
+            margin-bottom: .7rem;
+            transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .stat-n {
+            font-family: "Poppins", sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--blue);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-n em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .stat-l {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-top: .3rem;
+            display: block;
+        }
+
+        /* ── CURRENCIES SECTION — blush pink ── */
+        .currencies-sec {
+            background: #fef3f3;
+            padding: 90px 6%;
+        }
+
+        .currencies-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .curr-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .curr-header .sec-title {
+            color: var(--blue);
+        }
+
+        .curr-header .sec-sub {
+            margin: 0 auto;
+            color: var(--muted);
+        }
+
+        .curr-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .curr-card {
+            background: #fff;
+            border: 1px solid rgba(3, 53, 121, .09);
+            border-radius: 18px;
+            padding: 1.2rem 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            transition: all .4s cubic-bezier(.22, 1, .36, 1);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curr-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            transform: scaleX(0);
+            transition: transform .4s;
+            transform-origin: left;
+        }
+
+        .curr-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(3, 53, 121, .12);
+            border-color: rgba(3, 53, 121, .18);
+        }
+
+        .curr-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .curr-card:hover .curr-flag {
+            transform: scale(1.15);
+        }
+
+        .cc-usd::after {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .cc-gbp::after {
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+        }
+
+        .cc-eur::after {
+            background: linear-gradient(90deg, #059669, #34d399);
+        }
+
+        .cc-cad::after {
+            background: linear-gradient(90deg, #dc2626, #f87171);
+        }
+
+        .cc-cny::after {
+            background: linear-gradient(90deg, #d97706, #fbbf24);
+        }
+
+        .cc-zar::after {
+            background: linear-gradient(90deg, #0891b2, #22d3ee);
+        }
+
+        .cc-ghs::after {
+            background: linear-gradient(90deg, #0d9488, #2dd4bf);
+        }
+
+        .curr-flag {
+            font-size: 2rem;
+            flex-shrink: 0;
+            transition: transform .4s;
+        }
+
+        .curr-code {
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: .95rem;
+            color: var(--text);
+        }
+
+        .curr-name {
+            font-size: .7rem;
+            color: var(--muted);
+            margin-top: .1rem;
+        }
+
+        .curr-right {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .curr-rate {
+            font-family: "Poppins", sans-serif;
+            font-size: .88rem;
+            font-weight: 700;
+            color: var(--blue);
+            display: block;
+        }
+
+        .curr-change {
+            font-size: .62rem;
+            display: block;
+            margin-top: .1rem;
+        }
+
+        .change-up {
+            color: #10b981;
+        }
+
+        .change-down {
+            color: var(--red);
+        }
+
+        .curr-note {
+            text-align: center;
+            font-size: .78rem;
+            color: var(--muted);
+            margin-top: .5rem;
+        }
+
+        .curr-note span {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* ── FEATURES — periwinkle ── */
+        .features-sec {
+            background: #f0f4ff;
+            padding: 90px 6%;
+        }
+
+        .features-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .features-header .sec-title {
+            color: var(--blue);
+        }
+
+        .features-header .sec-sub {
+            margin: 0 auto;
+            color: var(--muted);
+        }
+
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .feat-card {
+            background: #fff;
+            border: 1px solid rgba(3, 53, 121, .09);
+            border-radius: 20px;
+            padding: 1.85rem;
+            transition: all .4s cubic-bezier(.22, 1, .36, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .feat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+        .feat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 48px rgba(3, 53, 121, .12);
+        }
+
+        .feat-card:hover::before {
+            opacity: 1;
+        }
+
+        .feat-card:hover .feat-icon {
+            transform: scale(1.12) rotate(-5deg);
+        }
+
+        .fc-blue::before {
+            background: radial-gradient(circle at top left, rgba(3, 53, 121, .04), transparent 60%);
+        }
+
+        .fc-red::before {
+            background: radial-gradient(circle at top left, rgba(175, 14, 14, .04), transparent 60%);
+        }
+
+        .fc-green::before {
+            background: radial-gradient(circle at top left, rgba(5, 150, 105, .04), transparent 60%);
+        }
+
+        .fc-gold::before {
+            background: radial-gradient(circle at top left, rgba(217, 119, 6, .04), transparent 60%);
+        }
+
+        .fc-purple::before {
+            background: radial-gradient(circle at top left, rgba(124, 58, 237, .04), transparent 60%);
+        }
+
+        .fc-teal::before {
+            background: radial-gradient(circle at top left, rgba(8, 145, 178, .04), transparent 60%);
+        }
+
+        .feat-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.1rem;
+            transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .fi-blue {
+            background: rgba(3, 53, 121, .09);
+        }
+
+        .fi-red {
+            background: rgba(175, 14, 14, .09);
+        }
+
+        .fi-green {
+            background: rgba(5, 150, 105, .09);
+        }
+
+        .fi-gold {
+            background: rgba(217, 119, 6, .1);
+        }
+
+        .fi-purple {
+            background: rgba(124, 58, 237, .09);
+        }
+
+        .fi-teal {
+            background: rgba(8, 145, 178, .09);
+        }
+
+        .feat-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: .45rem;
+        }
+
+        .feat-card p {
+            font-size: .86rem;
+            color: var(--muted);
+            line-height: 1.68;
+        }
+
+        /* ── VIRTUAL ACCOUNTS — deep navy ── */
+        .virt-sec {
+            background: #0b1d3a;
+            padding: 90px 6%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .virt-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .vg1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(175, 14, 14, .18);
+            top: -100px;
+            right: -60px;
+        }
+
+        .vg2 {
+            width: 280px;
+            height: 280px;
+            background: rgba(124, 58, 237, .18);
+            bottom: -60px;
+            left: -40px;
+        }
+
+        .virt-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* wallet cards */
+        .wallet-stack {
+            display: flex;
+            flex-direction: column;
+            gap: .85rem;
+        }
+
+        .wallet-card {
+            border-radius: 18px;
+            padding: 1.15rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all .4s cubic-bezier(.22, 1, .36, 1);
+            border: 1px solid transparent;
+            cursor: default;
+        }
+
+        .wallet-card:hover {
+            transform: translateX(6px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, .25);
+        }
+
+        .wc-active {
+            background: linear-gradient(135deg, var(--blue), var(--blue-d));
+            border-color: rgba(255, 255, 255, .15);
+        }
+
+        .wc-usd {
+            background: rgba(59, 130, 246, .15);
+            border-color: rgba(59, 130, 246, .2);
+        }
+
+        .wc-gbp {
+            background: rgba(124, 58, 237, .15);
+            border-color: rgba(124, 58, 237, .2);
+        }
+
+        .wc-eur {
+            background: rgba(5, 150, 105, .15);
+            border-color: rgba(5, 150, 105, .2);
+        }
+
+        .wc-ngn {
+            background: rgba(175, 14, 14, .15);
+            border-color: rgba(175, 14, 14, .2);
+        }
+
+        .w-flag {
+            font-size: 2rem;
+            flex-shrink: 0;
+            color: #ffffff70;
+        }
+
+        .w-info {
+            flex: 1;
+        }
+
+        .w-cur {
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .w-desc {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .5);
+            margin-top: .1rem;
+        }
+
+        .w-right {
+            text-align: right;
+        }
+
+        .w-bal {
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .w-acct {
+            font-size: .62rem;
+            color: rgba(255, 255, 255, .4);
+            margin-top: .1rem;
+        }
+
+        .virt-content .sec-title {
+            color: #fff;
+        }
+
+        .virt-content .sec-sub {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .virt-features {
+            list-style: none;
+            margin: 1.5rem 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+
+        .virt-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: .7rem;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .8);
+            line-height: 1.6;
+        }
+
+        .vf-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            background: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .6rem;
+            color: #fff;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── HOW IT WORKS — dark teal ── */
+        .hiw-sec {
+            background: linear-gradient(135deg, #0a2820, #0f3d30, #0a2840);
+            padding: 90px 6%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hiw-sec::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        .hiw-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .hiw-g1 {
+            width: 320px;
+            height: 320px;
+            background: #10b981;
+            opacity: .12;
+            top: -80px;
+            left: -60px;
+        }
+
+        .hiw-g2 {
+            width: 250px;
+            height: 250px;
+            background: #7c3aed;
+            opacity: .15;
+            bottom: -50px;
+            right: -40px;
+        }
+
+        .hiw-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hiw-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .hiw-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .hiw-step {
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 22px;
+            padding: 2rem;
+            transition: all .4s cubic-bezier(.22, 1, .36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hiw-step:hover {
+            background: rgba(255, 255, 255, .11);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+        }
+
+        .hiw-step-num {
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: rgba(255, 255, 255, .08);
+            position: absolute;
+            top: .9rem;
+            right: 1.2rem;
+        }
+
+        .hiw-step-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .hiw-step h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: .5rem;
+        }
+
+        .hiw-step p {
+            font-size: .86rem;
+            color: rgba(255, 255, 255, .52);
+            line-height: 1.7;
+        }
+
+        /* ── COMPARISON — warm gold tint ── */
+        .compare-sec {
+            background: #fff9ec;
+            padding: 90px 6%;
+        }
+
+        .compare-inner {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .compare-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .compare-header .sec-title {
+            color: var(--blue);
+        }
+
+        .compare-header .sec-sub {
+            margin: 0 auto;
+            color: var(--muted);
+        }
+
+        .compare-table {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(3, 53, 121, .09);
+            box-shadow: 0 4px 24px rgba(3, 53, 121, .06);
+        }
+
+        .ct-head {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+            background: #f4f6fb;
+            border-bottom: 1px solid rgba(3, 53, 121, .09);
+        }
+
+        .ct-cell {
+            padding: 1.1rem 1.25rem;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .ct-cell.hl {
+            background: linear-gradient(135deg, var(--blue), var(--blue-d));
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: .2rem;
+        }
+
+        .ct-cell.hl .sub {
+            font-size: .62rem;
+            opacity: .7;
+            font-weight: 400;
+        }
+
+        .ct-row {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+            border-bottom: 1px solid rgba(3, 53, 121, .07);
+            transition: background .2s;
+        }
+
+        .ct-row:last-child {
+            border-bottom: none;
+        }
+
+        .ct-row:hover {
+            background: #f9faff;
+        }
+
+        .ct-row .ct-cell {
+            color: var(--text);
+            font-weight: 400;
+            font-size: .88rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .ct-row .ct-cell.hl {
+            background: rgba(3, 53, 121, .04);
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .ct-row .ct-cell:first-child {
+            font-weight: 500;
+        }
+
+        .tick {
+            color: #10b981;
+            font-size: 1.05rem;
+        }
+
+        .cross {
+            color: #ef4444;
+            font-size: .9rem;
+        }
+
+        /* ── USE CASES — near black ── */
+        .usecases-sec {
+            background: #0d0d0d;
+            padding: 90px 6%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .usecases-sec::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .uc-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .ug1 {
+            width: 360px;
+            height: 360px;
+            background: rgba(175, 14, 14, .18);
+            top: -80px;
+            right: -60px;
+        }
+
+        .ug2 {
+            width: 280px;
+            height: 280px;
+            background: rgba(3, 53, 121, .22);
+            bottom: -60px;
+            left: -40px;
+        }
+
+        .usecases-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .uc-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .uc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .uc-card {
+            border-radius: 22px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 240px;
+            transition: all .4s cubic-bezier(.22, 1, .36, 1);
+            position: relative;
+        }
+
+        .uc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+        }
+
+        .uc-photo {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .uc-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .uc-card:hover .uc-photo img {
+            transform: scale(1.07);
+        }
+
+        .uc-text {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .uc-1 .uc-text {
+            background: linear-gradient(135deg, #0f2a50, #1a3d6e);
+        }
+
+        .uc-2 .uc-text {
+            background: linear-gradient(135deg, #1a0030, #2d0052);
+        }
+
+        .uc-3 .uc-text {
+            background: linear-gradient(135deg, #3d0000, #6b0000);
+        }
+
+        .uc-4 .uc-text {
+            background: linear-gradient(135deg, #0a2818, #0f3d24);
+        }
+
+        .uc-tag {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--red);
+            background: rgba(175, 14, 14, .15);
+            border: 1px solid rgba(175, 14, 14, .3);
+            border-radius: 50px;
+            padding: .2rem .65rem;
+            width: fit-content;
+            margin-bottom: .75rem;
+        }
+
+        .uc-1 .uc-tag,
+        .uc-2 .uc-tag {
+            border-color: rgba(255, 255, 255, .15);
+            background: rgba(255, 255, 255, .08);
+            color: rgba(255, 255, 255, .75);
+        }
+
+        .uc-3 .uc-tag {
+            background: rgba(217, 119, 6, .2);
+            border-color: rgba(217, 119, 6, .35);
+            color: #fbbf24;
+        }
+
+        .uc-4 .uc-tag {
+            background: rgba(16, 185, 129, .15);
+            border-color: rgba(16, 185, 129, .3);
+            color: #4ade80;
+        }
+
+        .uc-text h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: .4rem;
+            line-height: 1.3;
+        }
+
+        .uc-text p {
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.65;
+        }
+
+        .uc-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            margin-top: .85rem;
+            font-size: .75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .65);
+        }
+
+        .uc-highlight i {
+            color: var(--red);
+            font-size: .72rem;
+        }
+
+        .uc-1 .uc-highlight i,
+        .uc-2 .uc-highlight i {
+            color: #a78bfa;
+        }
+
+        .uc-3 .uc-highlight i {
+            color: #fbbf24;
+        }
+
+        .uc-4 .uc-highlight i {
+            color: #4ade80;
+        }
+
+        /* ── SECURITY — deep purple ── */
+        .security-sec {
+            background: linear-gradient(135deg, #1a0533, #2d0a55, #0b1d3a);
+            padding: 90px 6%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sec-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .sg1 {
+            width: 360px;
+            height: 360px;
+            background: rgba(124, 58, 237, .25);
+            top: -80px;
+            right: -60px;
+        }
+
+        .sg2 {
+            width: 260px;
+            height: 260px;
+            background: rgba(175, 14, 14, .18);
+            bottom: -50px;
+            left: -30px;
+        }
+
+        .security-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* shield visual */
+        .shield-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 380px;
+        }
+
+        .shield-photo {
+            width: 260px;
+            height: 320px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+            z-index: 2;
+            position: relative;
+            animation: floatR 6s ease-in-out infinite;
+        }
+
+        .shield-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px dashed rgba(255, 255, 255, .1);
+        }
+
+        .sr1 {
+            width: 320px;
+            height: 320px;
+            animation: spinSlow 20s linear infinite;
+        }
+
+        .sr2 {
+            width: 420px;
+            height: 420px;
+            animation: spinSlow 30s linear infinite reverse;
+            border-color: rgba(175, 14, 14, .1);
+        }
+
+        .sr1::after {
+            content: '🔒';
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+        }
+
+        .sr2::after {
+            content: '🛡️';
+            position: absolute;
+            bottom: 5px;
+            right: 25%;
+            font-size: .9rem;
+        }
+
+        .shield-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, .1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 14px;
+            padding: .65rem .9rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .sb1 {
+            bottom: 40px;
+            right: -20px;
+        }
+
+        .sb2 {
+            top: 50px;
+            left: -20px;
+            animation-delay: 1.5s;
+        }
+
+        .sb-icon {
+            font-size: 1rem;
+        }
+
+        .sb-lbl {
+            font-size: .56rem;
+            color: rgba(255, 255, 255, .55);
+            display: block;
+        }
+
+        .sb-val {
+            font-size: .8rem;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .security-content .sec-title {
+            color: #fff;
+        }
+
+        .security-content .sec-sub {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .sec-features {
+            list-style: none;
+            margin: 1.5rem 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .65rem;
+        }
+
+        .sec-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: .7rem;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .78);
+            line-height: 1.6;
+        }
+
+        .sf-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            background: rgba(124, 58, 237, .5);
+            border: 1px solid rgba(124, 58, 237, .6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .6rem;
+            color: #fff;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── TESTIMONIALS — soft cream ── */
+        .testi-sec {
+            background: #fdf9f4;
+            padding: 90px 6%;
+        }
+
+        .testi-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testi-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testi-header .sec-title {
+            color: var(--blue);
+        }
+
+        .testi-header .sec-sub {
+            margin: 0 auto;
+            color: var(--muted);
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .testi-card {
+            background: #fff;
+            border: 1px solid rgba(3, 53, 121, .09);
+            border-radius: 22px;
+            padding: 1.85rem;
+            transition: all .4s cubic-bezier(.22, 1, .36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), var(--blue));
+            transform: scaleX(0);
+            transition: transform .4s;
+            transform-origin: left;
+        }
+
+        .testi-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 44px rgba(3, 53, 121, .1);
+        }
+
+        .testi-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .testi-card.feat {
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+
+        .testi-card.feat::before {
+            background: rgba(255, 255, 255, .2);
+            transform: scaleX(1);
+        }
+
+        .testi-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(3, 53, 121, .1);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .testi-card.feat .testi-avatar {
+            border-color: rgba(255, 255, 255, .2);
+        }
+
+        .testi-use-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            font-size: .62rem;
+            font-weight: 700;
+            padding: .15rem .6rem;
+            border-radius: 50px;
+            margin-bottom: .7rem;
+        }
+
+        .tut-freelancer {
+            background: rgba(3, 53, 121, .08);
+            color: var(--blue);
+        }
+
+        .tut-importer {
+            background: rgba(175, 14, 14, .08);
+            color: var(--red);
+        }
+
+        .tut-student {
+            background: rgba(5, 150, 105, .08);
+            color: #059669;
+        }
+
+        .testi-card.feat .testi-use-tag {
+            background: rgba(255, 255, 255, .15);
+            color: rgba(255, 255, 255, .8);
+        }
+
+        .testi-stars {
+            color: #f5c842;
+            font-size: .88rem;
+            margin-bottom: .75rem;
+        }
+
+        .testi-text {
+            font-size: .9rem;
+            color: var(--muted);
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+
+        .testi-card.feat .testi-text {
+            color: rgba(255, 255, 255, .72);
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+        }
+
+        .testi-av {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .av-b {
+            background: rgba(3, 53, 121, .1);
+            color: var(--blue);
+            border: 1px solid rgba(3, 53, 121, .2);
+        }
+
+        .av-r {
+            background: rgba(175, 14, 14, .1);
+            color: var(--red);
+            border: 1px solid rgba(175, 14, 14, .2);
+        }
+
+        .av-g {
+            background: rgba(5, 150, 105, .1);
+            color: #059669;
+            border: 1px solid rgba(5, 150, 105, .2);
+        }
+
+        .testi-card.feat .testi-av {
+            background: rgba(255, 255, 255, .2);
+            color: #fff;
+            border-color: rgba(255, 255, 255, .3);
+        }
+
+        .testi-name {
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .testi-card.feat .testi-name {
+            color: #fff;
+        }
+
+        .testi-role {
+            font-size: .72rem;
+            color: var(--muted);
+        }
+
+        .testi-card.feat .testi-role {
+            color: rgba(255, 255, 255, .5);
+        }
+
+        /* ── DOWNLOAD — deep navy + photo ── */
+        .dl-sec {
+            background: #0b1d3a;
+            padding: 90px 6%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dl-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .dlg1 {
+            width: 380px;
+            height: 380px;
+            background: rgba(175, 14, 14, .15);
+            top: -80px;
+            right: -60px;
+        }
+
+        .dlg2 {
+            width: 260px;
+            height: 260px;
+            background: rgba(124, 58, 237, .18);
+            bottom: -60px;
+            left: -40px;
+        }
+
+        .dl-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dl-content .sec-title {
+            color: #fff;
+        }
+
+        .dl-content .sec-sub {
+            color: rgba(255, 255, 255, .58);
+            margin-bottom: 2rem;
+        }
+
+        .dl-rating {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: 2rem;
+        }
+
+        .dl-stars {
+            color: #f5c842;
+            font-size: .95rem;
+        }
+
+        .dl-rating p {
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .5);
+        }
+
+        .dl-rating p strong {
+            color: #fff;
+        }
+
+        .dl-btns {
+            display: flex;
+            gap: .85rem;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            background: rgba(255, 255, 255, .08);
+            border: 1.5px solid rgba(255, 255, 255, .18);
+            border-radius: 16px;
+            padding: .85rem 1.3rem;
+            cursor: pointer;
+            transition: all .3s;
+            text-decoration: none;
+            min-width: 170px;
+        }
+
+        .store-btn:hover {
+            background: rgba(255, 255, 255, .15);
+            border-color: rgba(255, 255, 255, .4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+        }
+
+        .sb-icon {
+            font-size: 1.7rem;
+            line-height: 1;
+        }
+
+        .sb-sub {
+            font-size: .56rem;
+            color: rgba(255, 255, 255, .5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .sb-name {
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: .9rem;
+            color: #fff;
+            display: block;
+        }
+
+        .dl-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dl-photo {
+            width: 100%;
+            max-width: 460px;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 22px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .4);
+        }
+
+        .dl-photo-badge {
+            position: absolute;
+            background: #fff;
+            border-radius: 16px;
+            padding: .75rem 1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            white-space: nowrap;
+        }
+
+        .dpb1 {
+            bottom: -20px;
+            left: 20px;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .dpb2 {
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, #059669, #0d9488);
+            animation: float 6.5s 1s ease-in-out infinite;
+        }
+
+        .dpb-icon {
+            font-size: 1rem;
+        }
+
+        .dpb-lbl {
+            font-size: .55rem;
+            display: block;
+        }
+
+        .dpb-val {
+            font-size: .8rem;
+            font-weight: 700;
+            display: block;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .dpb1 .dpb-lbl {
+            color: var(--muted);
+        }
+
+        .dpb1 .dpb-val {
+            color: var(--text);
+        }
+
+        .dpb2 .dpb-lbl {
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .dpb2 .dpb-val {
+            color: #fff;
+        }
+
+        /* ── CTA — deep crimson purple ── */
+        .cta-sec {
+            background: linear-gradient(135deg, #1a0030, #2d0050, #0b1d3a);
+            padding: 100px 6%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+        }
+
+        .cb1 {
+            width: 450px;
+            height: 450px;
+            background: rgba(175, 14, 14, .2);
+            top: -150px;
+            left: -60px;
+        }
+
+        .cb2 {
+            width: 350px;
+            height: 350px;
+            background: rgba(124, 58, 237, .25);
+            bottom: -80px;
+            right: -60px;
+        }
+
+        .cb3 {
+            width: 200px;
+            height: 200px;
+            background: rgba(3, 53, 121, .3);
+            top: 30%;
+            left: 43%;
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .cta-sec h2 {
+            font-size: clamp(2.2rem, 4.2vw, 3.5rem);
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: .9rem;
+        }
+
+        .cta-sec p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, .62);
+            margin-bottom: 2.2rem;
+            line-height: 1.75;
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-trust {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-trust-item {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            font-size: .78rem;
+            color: rgba(255, 255, 255, .4);
+        }
+
+        .cta-trust-item i {
+            color: rgba(255, 255, 255, .3);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #060b12;
+            color: rgba(255, 255, 255, .55);
+            padding: 65px 6% 28px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            font-size: .85rem;
+            line-height: 1.7;
+            margin-top: .65rem;
+            max-width: 250px;
+        }
+
+        .footer-logo {
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: 1.45rem;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+        }
+
+        .flp {
+            width: 25px;
+            height: 25px;
+            background: var(--red);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .footer-logo span {
+            color: var(--red);
+        }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            background: rgba(175, 14, 14, .15);
+            border: 1px solid rgba(175, 14, 14, .25);
+            border-radius: 50px;
+            padding: .2rem .7rem;
+            font-size: .64rem;
+            color: rgba(175, 14, 14, .9);
+            font-weight: 600;
+            margin-top: .6rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: .5rem;
+            margin-top: 1rem;
+        }
+
+        .soc-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .45);
+            text-decoration: none;
+            font-size: .75rem;
+            transition: all .3s;
+        }
+
+        .soc-btn:hover {
+            background: var(--red);
+            color: #fff;
+            border-color: var(--red);
+        }
+
+        .footer-col h5 {
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            color: #fff;
+            font-size: .85rem;
+            margin-bottom: .85rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .48rem;
+        }
+
+        .footer-col ul a {
+            color: rgba(255, 255, 255, .45);
+            font-size: .82rem;
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        .footer-col ul a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            padding-top: 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .25);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.4rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, .25);
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        /* ── CURSOR GLOW ── */
+        .cursor-glow {
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(175, 14, 14, .06), transparent 70%);
+            pointer-events: none;
+            z-index: 9997;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:1100px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 120px;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .virt-inner,
+            .security-inner,
+            .dl-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .security-visual {
+                display: none;
+            }
+
+            .dl-visual {
+                display: none;
+            }
+
+            .curr-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:900px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hiw-steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .uc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testi-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .ct-head,
+            .ct-row {
+                grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            }
+        }
+
+        @media(max-width:640px) {
+            nav {
+                padding: 0 4%;
+            }
+
+            .nav-links,
+            .btn-nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 100px 4% 60px;
+            }
+
+            .feat-grid,
+            .testi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .curr-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hiw-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .ct-head,
+            .ct-row {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+
+            .ct-head .ct-cell:nth-child(4),
+            .ct-row .ct-cell:nth-child(4) {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: .7rem;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .uc-card {
+                grid-template-columns: 1fr;
+            }
+
+            .uc-photo {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <a href="./index.html" class="nav-logo"><img src="./img/logo.png" width="75px" height="50px" alt="" srcset=""></a>
+        <ul class="nav-links">
+            <li><a href="#currencies">Currencies</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#compare">Compare</a></li>
+            <li><a href="#usecases">Use Cases</a></li>
+        </ul>
+        <a href="#" class="btn-nav">Open Account</a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="#currencies">Currencies</a>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#compare">Compare Rates</a>
+        <a href="#usecases">Use Cases</a>
+        <a href="#" style="color:var(--red);font-weight:700;border:none;">Open Account →</a>
+    </div>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="home">
+        <div class="hero-glow hg1"></div>
+        <div class="hero-glow hg2"></div>
+        <div class="hero-glow hg3"></div>
+        <div class="hero-glow hg4"></div>
+
+        <div class="hero-left">
+            <div class="hero-badge"><span class="hero-badge-dot"></span> 7 currencies. Zero hidden fees.</div>
+            <h1>One wallet.<br><em>Every currency</em><br>you'll ever <span class="ul">need.</span></h1>
+            <p class="hero-p">Hold, send, receive and convert money in 7 global currencies at interbank exchange rates.
+                Built for freelancers, importers, students and businesses that move across borders.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn-primary">Open Multicurrency Account <svg width="14" height="14"
+                        viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg></a>
+                <a href="#how" class="btn-outline">See How It Works</a>
+            </div>
+            <!-- <div class="hero-chips">
+                <div class="chip"><i class="fa-solid fa-shield-halved"></i> CBN Licensed FX</div>
+                <div class="chip"><i class="fa-solid fa-bolt"></i> Interbank Rates</div>
+                <div class="chip"><i class="fa-solid fa-lock"></i> Zero Hidden Fees</div>
+                <div class="chip"><i class="fa-solid fa-globe"></i> 7 Currencies</div>
+            </div> -->
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-img-wrap">
+                <div class="hero-ring hr1"></div>
+                <div class="hero-ring hr2"></div>
+                <img class="hero-photo" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80"
+                    alt="People using ComePay internationally"
+                    onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80'">
+                <!-- Floating cards -->
+                <div class="float-card fc1 fc-light">
+                    <span class="fc-icon">💸</span>
+                    <div><span class="fc-lbl">Sent to UK</span><span class="fc-val">£850.00</span></div>
+                </div>
+                <div class="float-card fc2 fc-dark">
+                    <span class="fc-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <div><span class="fc-lbl">Transfer Speed</span><span class="fc-val">4 seconds</span></div>
+                </div>
+                <div class="float-card fc3 fc-dark">
+                    <span class="fc-icon">✅</span>
+                    <div><span class="fc-lbl">Rate Locked</span><span class="fc-val">$1 = ₦1,600</span></div>
+                </div>
+                <div class="float-card fc4 fc-dark">
+                    <span class="fc-icon">🔒</span>
+                    <div><span class="fc-lbl">Zero Fees</span><span class="fc-val">₦0 charged</span></div>
+                </div>
+                <!-- Converter mini -->
+                <div class="conv-float">
+                    <div class="conv-head">
+                        <div class="conv-title">💱 Converter</div>
+                        <div class="conv-live"><span class="conv-live-dot"></span>Live</div>
+                    </div>
+                    <div class="conv-field">
+                        <span class="conv-field-lbl">You Send</span>
+                        <div class="conv-field-row">
+                            <div class="conv-amount" id="heroFromAmt">₦500,000</div>
+                            <div class="conv-cur">🇳🇬 NGN</div>
+                        </div>
+                    </div>
+                    <button class="conv-swap" onclick="heroSwap()">⇅</button>
+                    <div class="conv-field">
+                        <span class="conv-field-lbl">They Receive</span>
+                        <div class="conv-field-row">
+                            <div class="conv-amount" id="heroToAmt">$312.50</div>
+                            <div class="conv-cur" id="heroToCur">🇺🇸 USD</div>
+                        </div>
+                    </div>
+                    <div class="conv-rate-row">
+                        <div class="conv-rate-txt"><strong id="heroRate">1 USD = ₦1,600</strong></div>
+                        <div class="conv-badge">Best ✓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── STATS ── -->
+    <section class="stats-sec">
+        <div class="stats-grid">
+            <div class="stat-card sc-blue reveal s1">
+                <span class="stat-icon"><i class="fa-solid fa-globe" style="color: #af0e0e;"></i></span>
+                <span class="stat-n">7<em>+</em></span>
+                <span class="stat-l">Supported Currencies</span>
+            </div>
+            <div class="stat-card sc-green reveal s2">
+                <span class="stat-icon"><i class="fa-solid fa-money-bill-wave" style="color: #af0e0e;"></i></span>
+                <span class="stat-n">₦0</span>
+                <span class="stat-l">Hidden Transfer Fees</span>
+            </div>
+            <div class="stat-card sc-red reveal s3">
+                <span class="stat-icon"><i class="fa-solid fa-bolt" style="color: #af0e0e;"></i></span>
+                <span class="stat-n">4<em>sec</em></span>
+                <span class="stat-l">Average Transfer Speed</span>
+            </div>
+            <div class="stat-card sc-gold reveal s4">
+                <span class="stat-icon"><i class="fa-solid fa-building-columns" style="color: #af0e0e;"></i></span>
+                <span class="stat-n">99.9<em>%</em></span>
+                <span class="stat-l">Uptime Guarantee</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CURRENCIES ── -->
+    <section class="currencies-sec" id="currencies">
+        <div class="currencies-inner">
+            <div class="curr-header reveal">
+                <div class="tag tag-red tag-c">Supported Currencies</div>
+                <h2 class="sec-title">7 currencies.<br>All at interbank rates.</h2>
+                <p class="sec-sub">Hold and transact in any of these currencies from a single ComePay wallet. Rates
+                    updated every 60 seconds — what you see is exactly what you pay.</p>
+            </div>
+            <div class="curr-grid reveal">
+                <div class="curr-card cc-usd s1">
+                    <span class="curr-flag">🇺🇸</span>
+                    <div>
+                        <div class="curr-code">USD</div>
+                        <div class="curr-name">US Dollar</div>
+                    </div>
+                    <div class="curr-right"><span class="curr-rate" id="usd-rate">₦1,600</span><span
+                            class="curr-change change-up" id="usd-ch">+0.2%</span></div>
+                </div>
+                <div class="curr-card cc-gbp s2">
+                    <span class="curr-flag">🇬🇧</span>
+                    <div>
+                        <div class="curr-code">GBP</div>
+                        <div class="curr-name">British Pound</div>
+                    </div>
+                    <div class="curr-right"><span class="curr-rate" id="gbp-rate">₦2,020</span><span
+                            class="curr-change change-up" id="gbp-ch">+0.4%</span></div>
+                </div>
+                <div class="curr-card cc-eur s3">
+                    <span class="curr-flag">🇪🇺</span>
+                    <div>
+                        <div class="curr-code">EUR</div>
+                        <div class="curr-name">Euro</div>
+                    </div>
+                    <div class="curr-right"><span class="curr-rate" id="eur-rate">₦1,740</span><span
+                            class="curr-change change-up" id="eur-ch">+0.1%</span></div>
+                </div>
+                <div class="curr-card cc-cad s4">
+                    <span class="curr-flag">🇨🇦</span>
+                    <div>
+                        <div class="curr-code">CAD</div>
+                        <div class="curr-name">Canadian Dollar</div>
+                    </div>
+                    <div class="curr-right"><span class="curr-rate" id="cad-rate">₦1,180</span><span
+                            class="curr-change change-down" id="cad-ch">-0.1%</span></div>
+                </div>
+                <div class="curr-card cc-cny s1">
+                    <span class="curr-flag">🇨🇳</span>
+                    <div>
+                        <div class="curr-code">CNY</div>
+                        <div class="curr-name">Chinese Yuan</div>
+                    </div>
+                    <div class="curr-right"><span class="curr-rate" id="cny-rate">₦220</span><span
+                            class="curr-change change-up" id="cny-ch">+0.2%</span></div>
+                </div>
+                <div class="curr-card cc-zar s2">
+                    <span class="curr-flag">🇿🇦</span>
+                    <div>
+                        <div class="curr-code">ZAR</div>
+                        <div class="curr-name">South African Rand</div>
+                    </div>
+                    <div class="curr-right"><span class="curr-rate" id="zar-rate">₦88</span><span
+                            class="curr-change change-up" id="zar-ch">+0.3%</span></div>
+                </div>
+                <div class="curr-card cc-ghs s3">
+                    <span class="curr-flag">🇬🇭</span>
+                    <div>
+                        <div class="curr-code">GHS</div>
+                        <div class="curr-name">Ghanaian Cedi</div>
+                    </div>
+                    <div class="curr-right"><span class="curr-rate" id="ghs-rate">₦103</span><span
+                            class="curr-change change-down" id="ghs-ch">-0.2%</span></div>
+                </div>
+            </div>
+            <p class="curr-note reveal">Rates updated every 60 seconds. <span>ComePay guarantees the rate you see is the
+                    rate you get.</span></p>
+        </div>
+    </section>
+
+    <!-- ── FEATURES ── -->
+    <section class="features-sec" id="features">
+        <div class="features-inner">
+            <div class="features-header reveal">
+                <div class="tag tag-red tag-c">Key Features</div>
+                <h2 class="sec-title">Everything you need to<br>move money globally</h2>
+                <p class="sec-sub">A complete multicurrency toolkit built for how modern Nigerians live and work across
+                    borders.</p>
+            </div>
+            <div class="feat-grid">
+                <div class="feat-card fc-blue reveal s1">
+                    <div class="feat-icon fi-blue"><i class="fa-solid fa-wallet" style="color:var(--blue)"></i></div>
+                    <h4>Hold Multiple Currencies</h4>
+                    <p>Keep separate wallets for USD, GBP, EUR, and more. No forced conversion — your money stays in
+                        your chosen currency until you decide.</p>
+                </div>
+                <div class="feat-card fc-red reveal s2">
+                    <div class="feat-icon fi-red"><i class="fa-solid fa-paper-plane" style="color:var(--red)"></i></div>
+                    <h4>Instant International Transfers</h4>
+                    <p>Send money abroad in seconds at interbank rates. No delays, no correspondent bank fees, no
+                        surprises.</p>
+                </div>
+                <div class="feat-card fc-green reveal s3">
+                    <div class="feat-icon fi-green"><i class="fa-solid fa-arrow-down" style="color:#059669"></i></div>
+                    <h4>Receive Payments from Abroad</h4>
+                    <p>Get paid directly into your ComePay foreign currency wallet from clients, employers, or family
+                        overseas.</p>
+                </div>
+                <div class="feat-card fc-gold reveal s1">
+                    <div class="feat-icon fi-gold"><i class="fa-solid fa-arrows-rotate" style="color:#d97706"></i></div>
+                    <h4>Live Currency Conversion</h4>
+                    <p>Convert between currencies at real-time interbank rates with a single tap. Lock your rate for up
+                        to 24 hours.</p>
+                </div>
+                <div class="feat-card fc-purple reveal s2">
+                    <div class="feat-icon fi-purple"><i class="fa-solid fa-credit-card" style="color:#7c3aed"></i></div>
+                    <h4>Virtual Multi-Currency Cards</h4>
+                    <p>Get dedicated virtual cards for each currency wallet. Shop on international sites, pay
+                        subscriptions, manage expenses.</p>
+                </div>
+                <div class="feat-card fc-teal reveal s3">
+                    <div class="feat-icon fi-teal"><i class="fa-solid fa-bell" style="color:#0891b2"></i></div>
+                    <h4>Rate Alerts & History</h4>
+                    <p>Set custom rate alerts for your currency pairs. Track historical trends and time your conversions
+                        perfectly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── VIRTUAL ACCOUNTS ── -->
+    <section class="virt-sec" id="accounts">
+        <div class="virt-glow vg1"></div>
+        <div class="virt-glow vg2"></div>
+        <div class="virt-inner">
+            <div class="wallet-stack reveal-l">
+                <div class="wallet-card wc-active">
+                    <span class="w-flag">🇳🇬</span>
+                    <div class="w-info">
+                        <div class="w-cur">NGN Wallet</div>
+                        <div class="w-desc">Naira Main Account</div>
+                    </div>
+                    <div class="w-right">
+                        <div class="w-bal">₦4,820,500</div>
+                        <div class="w-acct">Acct: 9876543210</div>
+                    </div>
+                </div>
+                <div class="wallet-card wc-usd">
+                    <span class="w-flag">🇺🇸</span>
+                    <div class="w-info">
+                        <div class="w-cur">USD Wallet</div>
+                        <div class="w-desc">US Dollar Account</div>
+                    </div>
+                    <div class="w-right">
+                        <div class="w-bal">$2,450.00</div>
+                        <div class="w-acct">Routing: 026073150</div>
+                    </div>
+                </div>
+                <div class="wallet-card wc-gbp">
+                    <span class="w-flag">🇬🇧</span>
+                    <div class="w-info">
+                        <div class="w-cur">GBP Wallet</div>
+                        <div class="w-desc">British Pound Account</div>
+                    </div>
+                    <div class="w-right">
+                        <div class="w-bal">£1,200.00</div>
+                        <div class="w-acct">Sort: 20-00-00</div>
+                    </div>
+                </div>
+                <div class="wallet-card wc-eur">
+                    <span class="w-flag">🇪🇺</span>
+                    <div class="w-info">
+                        <div class="w-cur">EUR Wallet</div>
+                        <div class="w-desc">Euro Account (IBAN)</div>
+                    </div>
+                    <div class="w-right">
+                        <div class="w-bal">€850.00</div>
+                        <div class="w-acct">IBAN: DE89••••3704</div>
+                    </div>
+                </div>
+            </div>
+            <div class="virt-content reveal-r">
+                <div class="tag tag-white">Virtual Foreign Accounts</div>
+                <h2 class="sec-title">Your own USD, GBP &amp; EUR account numbers — instantly.</h2>
+                <p class="sec-sub" style="color:rgba(255,255,255,.58)">Get dedicated local account details for major
+                    currencies. Your clients abroad can pay you as if you're a local — no SWIFT codes, no complications.
+                </p>
+                <ul class="virt-features">
+                    <li>
+                        <div class="vf-dot">✓</div>Real US routing &amp; account number for USD receipts
+                    </li>
+                    <li>
+                        <div class="vf-dot">✓</div>UK sort code &amp; account number for GBP payments
+                    </li>
+                    <li>
+                        <div class="vf-dot">✓</div>IBAN for Euro transfers from Europe
+                    </li>
+                    <li>
+                        <div class="vf-dot">✓</div>Receive from Upwork, Fiverr, PayPal, Deel &amp; more
+                    </li>
+                    <li>
+                        <div class="vf-dot">✓</div>Auto-convert to NGN or hold in foreign currency
+                    </li>
+                </ul>
+                <div style="display:flex;gap:.85rem;flex-wrap:wrap;">
+                    <a href="#" class="btn-primary">Get Your Foreign Accounts <svg width="14" height="14"
+                            viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></a>
+                    <a href="#" class="btn-ghost-dark"
+                        style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="hiw-sec" id="how">
+        <div class="hiw-glow hiw-g1"></div>
+        <div class="hiw-glow hiw-g2"></div>
+        <div class="hiw-inner">
+            <div class="hiw-header reveal">
+                <div>
+                    <div class="tag tag-green">Simple Process</div>
+                    <h2 class="sec-title" style="color:#fff;">Send money globally<br>in 3 simple steps</h2>
+                </div>
+                <p class="sec-sub" style="color:rgba(255,255,255,.5)">From opening your account to completing your first
+                    international transfer — takes under 5 minutes.</p>
+            </div>
+            <div class="hiw-steps reveal">
+                <div class="hiw-step s1">
+                    <div class="hiw-step-num">01</div>
+                    <div class="hiw-step-icon"><i class="fa-solid fa-building-columns"
+                            style="color:#fff;font-size:1.3rem;"></i></div>
+                    <h4>Open Your Multicurrency Account</h4>
+                    <p>Sign up with your BVN and NIN. Choose the currencies you need and get your foreign account
+                        numbers instantly — no paperwork.</p>
+                </div>
+                <div class="hiw-step s2">
+                    <div class="hiw-step-num">02</div>
+                    <div class="hiw-step-icon"><i class="fa-solid fa-money-bill-wave"
+                            style="color:#fff;font-size:1.3rem;"></i></div>
+                    <h4>Fund Your Wallet</h4>
+                    <p>Add money via bank transfer or card. Convert to your desired currency at live interbank rates, or
+                        receive directly in foreign currency.</p>
+                </div>
+                <div class="hiw-step s3">
+                    <div class="hiw-step-num">03</div>
+                    <div class="hiw-step-icon"><i class="fa-solid fa-globe" style="color:#fff;font-size:1.3rem;"></i>
+                    </div>
+                    <h4>Send, Receive or Convert</h4>
+                    <p>Transfer internationally in seconds, receive from clients abroad, or convert between currencies —
+                        all with zero hidden fees.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── COMPARISON ── -->
+    <section class="compare-sec" id="compare">
+        <div class="compare-inner">
+            <div class="compare-header reveal">
+                <div class="tag tag-gold tag-c">Rate Comparison</div>
+                <h2 class="sec-title">See how much you save<br>with ComePay</h2>
+                <p class="sec-sub">Compare our rates against traditional banks and other platforms. The difference
+                    speaks for itself.</p>
+            </div>
+            <div class="compare-table reveal">
+                <div class="ct-head">
+                    <div class="ct-cell">Feature</div>
+                    <div class="ct-cell hl">Come<span style="color:rgba(255,100,100,.9)">Pay</span><span
+                            class="sub">Recommended</span></div>
+                    <div class="ct-cell">Traditional Banks</div>
+                    <div class="ct-cell">Other Fintechs</div>
+                </div>
+                <div class="ct-row">
+                    <div class="ct-cell">Exchange Rate</div>
+                    <div class="ct-cell hl">Interbank rate</div>
+                    <div class="ct-cell">+3–5% markup</div>
+                    <div class="ct-cell">+1–2% markup</div>
+                </div>
+                <div class="ct-row">
+                    <div class="ct-cell">Transfer Fees</div>
+                    <div class="ct-cell hl">₦0 on platform</div>
+                    <div class="ct-cell">₦1,000–₦5,000</div>
+                    <div class="ct-cell">0.5–1.5%</div>
+                </div>
+                <div class="ct-row">
+                    <div class="ct-cell">Transfer Speed</div>
+                    <div class="ct-cell hl">Under 10 seconds</div>
+                    <div class="ct-cell">1–3 business days</div>
+                    <div class="ct-cell">Minutes to hours</div>
+                </div>
+                <div class="ct-row">
+                    <div class="ct-cell">Virtual Foreign Account</div>
+                    <div class="ct-cell hl"><span class="tick">✓</span> Included free</div>
+                    <div class="ct-cell"><span class="cross">✕</span> Not available</div>
+                    <div class="ct-cell"><span class="tick">✓</span> Some plans</div>
+                </div>
+                <div class="ct-row">
+                    <div class="ct-cell">Rate Lock (24hr)</div>
+                    <div class="ct-cell hl"><span class="tick">✓</span> Free</div>
+                    <div class="ct-cell"><span class="cross">✕</span> No</div>
+                    <div class="ct-cell"><span class="cross">✕</span> No</div>
+                </div>
+                <div class="ct-row">
+                    <div class="ct-cell">Currencies Supported</div>
+                    <div class="ct-cell hl">7 major currencies</div>
+                    <div class="ct-cell">2–5</div>
+                    <div class="ct-cell">5–10</div>
+                </div>
+                <div class="ct-row">
+                    <div class="ct-cell">CBN Licensed FX</div>
+                    <div class="ct-cell hl"><span class="tick">✓</span> Yes</div>
+                    <div class="ct-cell"><span class="tick">✓</span> Yes</div>
+                    <div class="ct-cell"><span class="cross">✕</span> Varies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── USE CASES ── -->
+    <section class="usecases-sec" id="usecases">
+        <div class="uc-glow ug1"></div>
+        <div class="uc-glow ug2"></div>
+        <div class="usecases-inner">
+            <div class="uc-header reveal">
+                <div class="tag tag-white tag-c">Who It's For</div>
+                <h2 class="sec-title" style="color:#fff;">Built for how Nigerians<br>move across borders</h2>
+                <p class="sec-sub" style="color:rgba(255,255,255,.5);margin:0 auto;">Whether you earn in dollars, pay in
+                    euros, or send money home — ComePay has a solution for your exact situation.</p>
+            </div>
+            <div class="uc-grid reveal">
+                <div class="uc-card uc-1">
+                    <div class="uc-photo">
+                        <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=500&q=80"
+                            alt="Freelancer working remotely">
+                    </div>
+                    <div class="uc-text">
+                        <div>
+                            <div class="uc-tag"><i class="fa-solid fa-laptop"></i> Freelancers</div>
+                            <h4>Get paid in USD, GBP or EUR from international clients</h4>
+                            <p>Receive from Upwork, Fiverr, Toptal, Deel and more. Hold your earnings or convert at the
+                                best moment.</p>
+                        </div>
+                        <div class="uc-highlight"><i class="fa-solid fa-bolt"></i> Save up to 5% vs traditional bank
+                            rates</div>
+                    </div>
+                </div>
+                <div class="uc-card uc-2">
+                    <div class="uc-photo">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&q=80"
+                            alt="Student paying tuition">
+                    </div>
+                    <div class="uc-text">
+                        <div>
+                            <div class="uc-tag"><i class="fa-solid fa-graduation-cap"></i> Students</div>
+                            <h4>Pay tuition and living expenses abroad in local currency</h4>
+                            <p>Pay UK, US, Canadian and Australian universities directly — no SWIFT codes, no surprise
+                                charges.</p>
+                        </div>
+                        <div class="uc-highlight"><i class="fa-solid fa-star"></i> Transparent rates — no surprise fees
+                        </div>
+                    </div>
+                </div>
+                <div class="uc-card uc-3">
+                    <div class="uc-photo">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&q=80"
+                            alt="Importer with goods">
+                    </div>
+                    <div class="uc-text">
+                        <div>
+                            <div class="uc-tag"><i class="fa-solid fa-box-open"></i> Importers</div>
+                            <h4>Pay Chinese, UAE & European suppliers at perfect rates</h4>
+                            <p>Hold CNY, EUR or GBP and pay when rates are favourable. Rate lock prevents last-minute
+                                surprises.</p>
+                        </div>
+                        <div class="uc-highlight"><i class="fa-solid fa-lock"></i> Lock rates up to 24 hours in advance
+                        </div>
+                    </div>
+                </div>
+                <div class="uc-card uc-4">
+                    <div class="uc-photo">
+                        <img src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?w=500&q=80"
+                            alt="Family receiving money">
+                    </div>
+                    <div class="uc-text">
+                        <div>
+                            <div class="uc-tag"><i class="fa-solid fa-house"></i> Diaspora</div>
+                            <h4>Send money home from UK, US & Europe in seconds</h4>
+                            <p>Family receives naira directly into any Nigerian bank account at rates that beat every
+                                high-street bank.</p>
+                        </div>
+                        <div class="uc-highlight"><i class="fa-solid fa-clock"></i> Recipients receive funds in under 60
+                            seconds</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SECURITY ── -->
+    <section class="security-sec" id="security">
+        <div class="sec-glow sg1"></div>
+        <div class="sec-glow sg2"></div>
+        <div class="security-inner">
+            <div class="shield-wrap reveal-l">
+                <div class="shield-ring sr2"></div>
+                <div class="shield-ring sr1"></div>
+                <img class="shield-photo" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&q=80"
+                    alt="Security and encryption">
+                <div class="shield-badge sb1">
+                    <span class="sb-icon"><i class="fa-solid fa-lock" style="color: #fff;"></i></span>
+                    <div><span class="sb-lbl">Encryption</span><span class="sb-val">256-bit SSL</span></div>
+                </div>
+                <div class="shield-badge sb2">
+                    <span class="sb-icon"><i class="fa-solid fa-building-columns" style="color: #fff;"></i></span>
+                    <div><span class="sb-lbl">Licensed by</span><span class="sb-val">CBN Nigeria</span></div>
+                </div>
+            </div>
+            <div class="security-content reveal-r">
+                <div class="tag tag-white" style="color:#a78bfa;"></div>
+                <div class="tag"
+                    style="color:#a78bfa;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.75rem;display:inline-flex;align-items:center;gap:.45rem;">
+                    <span
+                        style="width:14px;height:2px;background:#a78bfa;border-radius:2px;display:block;"></span>Security
+                    &amp; Compliance</div>
+                <h2 class="sec-title">Your money travels<br>safely. Always.</h2>
+                <p class="sec-sub" style="color:rgba(255,255,255,.55)">Every international transfer on ComePay is
+                    protected by the same security standards used by global banks.</p>
+                <ul class="sec-features">
+                    <li>
+                        <div class="sf-dot">✓</div>CBN licensed for foreign exchange operations in Nigeria
+                    </li>
+                    <li>
+                        <div class="sf-dot">✓</div>256-bit SSL encryption on all transactions and data
+                    </li>
+                    <li>
+                        <div class="sf-dot">✓</div>NDIC-insured naira deposits up to ₦5 million
+                    </li>
+                    <li>
+                        <div class="sf-dot">✓</div>Biometric authentication and 2FA on every login
+                    </li>
+                    <li>
+                        <div class="sf-dot">✓</div>Real-time fraud detection and transaction monitoring
+                    </li>
+                    <li>
+                        <div class="sf-dot">✓</div>Rate guarantee — the rate you see is the rate you get
+                    </li>
+                </ul>
+                <div style="display:flex;gap:.85rem;flex-wrap:wrap;">
+                    <a href="#" class="btn-primary">Open Secure Account <svg width="14" height="14" viewBox="0 0 16 16"
+                            fill="none">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></a>
+                    <a href="#" class="btn-ghost-dark"
+                        style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.65);">Read Security Policy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="testi-sec" id="testimonials">
+        <div class="testi-inner">
+            <div class="testi-header reveal">
+                <div class="tag tag-red tag-c">Real Stories</div>
+                <h2 class="sec-title">Nigerians who moved<br>their money smarter</h2>
+                <p class="sec-sub">From Lagos to London — real people saving real money with ComePay Multicurrency.</p>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card reveal s1">
+                    <img class="testi-avatar"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Tunde Musa">
+                    <div class="testi-use-tag tut-freelancer"><i class="fa-solid fa-laptop-code"></i> Freelancer</div>
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"I used to lose almost ₦80,000 monthly on poor exchange rates. ComePay's USD
+                        wallet means I receive my Upwork earnings at interbank rates and convert whenever I want. It
+                        changed everything."</p>
+                    <div class="testi-author">
+                        <div class="testi-av av-b">TM</div>
+                        <div>
+                            <div class="testi-name">Tunde Musa</div>
+                            <div class="testi-role">Software Developer, Lagos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card feat reveal s2">
+                    <img class="testi-avatar"
+                        src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?w=100&q=80"
+                        alt="Adeola Okonkwo" style="border-color:rgba(255,255,255,.2)">
+                    <div class="testi-use-tag tut-importer"><i class="fa-solid fa-box"></i> Importer</div>
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"I import goods from China and the rate lock feature alone saved me ₦2 million
+                        last quarter. I hold CNY in my wallet and pay when the rate is right. Absolute game changer."
+                    </p>
+                    <div class="testi-author">
+                        <div class="testi-av"
+                            style="background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3);">AO
+                        </div>
+                        <div>
+                            <div class="testi-name">Adeola Okonkwo</div>
+                            <div class="testi-role">Importer & Distributor, Kano</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card reveal s3">
+                    <img class="testi-avatar" src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=100&q=80"
+                        alt="Funmi Kolade">
+                    <div class="testi-use-tag tut-student"><i class="fa-solid fa-graduation-cap"></i> Student Parent
+                    </div>
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"My daughter studies in the UK. I now build up GBP in my ComePay wallet over
+                        the year and pay directly to her university. Zero bank charges. It's incredible."</p>
+                    <div class="testi-author">
+                        <div class="testi-av av-g">FK</div>
+                        <div>
+                            <div class="testi-name">Funmi Kolade</div>
+                            <div class="testi-role">Business Owner, Port Harcourt</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── DOWNLOAD ── -->
+    <section class="dl-sec" id="download">
+        <div class="dl-glow dlg1"></div>
+        <div class="dl-glow dlg2"></div>
+        <div class="dl-inner">
+            <div class="dl-content reveal-r">
+                <div class="tag tag-white">Get The App</div>
+                <h2 class="sec-title">Your global wallet,<br>always in your pocket</h2>
+                <p class="sec-sub">Download ComePay and access all your currency wallets, live rates, and international
+                    transfers anytime — from anywhere in the world.</p>
+                <div class="dl-rating">
+                    <span class="dl-stars">★★★★★</span>
+                    <p><strong>4.9/5</strong> — 28,000+ reviews</p>
+                </div>
+                <div class="dl-btns">
+                    <a href="#" class="store-btn">
+                        <div class="sb-icon"><img src="./img/apple.png" width="40px" height="40px" alt="" srcset=""></div>
+                        <div><span class="sb-sub">Download on the</span><span class="sb-name">App Store</span></div>
+                    </a>
+                    <a href="#" class="store-btn">
+                        <div class="sb-icon"><img src="./img/play.png" width="40px" height="40px" alt="" srcset=""></div>
+                        <div><span class="sb-sub">Get it on</span><span class="sb-name">Google Play</span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="dl-visual reveal-l">
+                <div style="position:relative;display:inline-block;">
+                    <img class="dl-photo" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&q=80"
+                        alt="Person using ComePay app on phone">
+                    <div class="dl-photo-badge dpb1">
+                        <span class="dpb-icon">💱</span>
+                        <div><span class="dpb-lbl">Last Conversion</span><span class="dpb-val">₦500K → $312.50</span>
+                        </div>
+                    </div>
+                    <div class="dl-photo-badge dpb2">
+                        <span class="dpb-icon"><i class="fa-solid fa-bolt" style="color: #fff;"></i></span>
+                        <div><span class="dpb-lbl">Transfer Speed</span><span class="dpb-val">4 seconds ✓</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta-sec" id="cta">
+        <div class="cta-blob cb1"></div>
+        <div class="cta-blob cb2"></div>
+        <div class="cta-blob cb3"></div>
+        <div class="cta-inner reveal">
+            <div class="tag tag-white tag-c" style="margin-bottom:.85rem;">Start Today — It's Free</div>
+            <h2>The world is open.<br>Your money should be too.</h2>
+            <p>Join thousands of Nigerians already sending, receiving and holding global currencies with ComePay. Open
+                your multicurrency account in minutes — completely free.</p>
+            <div class="cta-btns">
+                <a href="#" class="btn-primary">Open Multicurrency Account</a>
+                <a href="#" class="btn-outline">💬 Talk to an FX Advisor</a>
+            </div>
+            <div class="cta-trust">
+                <!-- <div class="cta-trust-item"><i class="fa-solid fa-shield-halved"></i> CBN Licensed FX Operator</div> -->
+                <div class="cta-trust-item"><i class="fa-solid fa-lock"></i> 256-bit SSL Encryption</div>
+                <div class="cta-trust-item"><i class="fa-solid fa-star"></i> 4.9/5 App Store Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer id="contact">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <img src="./img/logo.png" width="75px" height="50px" alt="" srcset="">
+                    </a>
+                    <p>Nigeria's most trusted platform for international money transfers and multicurrency banking.</p>
+                    <!-- <div class="footer-badge">🏦 CBN Licensed FX Operator</div> -->
+                    <div class="footer-social">
+                        <a href="#" class="soc-btn">𝕏</a><a href="#" class="soc-btn">in</a>
+                        <a href="#" class="soc-btn">f</a><a href="#" class="soc-btn">▶</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Multicurrency</h5>
+                    <ul>
+                        <li><a href="#">Currency Converter</a></li>
+                        <li><a href="#">Virtual Foreign Accounts</a></li>
+                        <li><a href="#">International Transfers</a></li>
+                        <li><a href="#">Rate Alerts</a></li>
+                        <li><a href="#">Multi-Currency Cards</a></li>
+                        <li><a href="#">FX Rate History</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ComePay Technologies Ltd. RC: 1234567. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+        // Hamburger
+        const hb = document.getElementById('hamburger');
+        const mm = document.getElementById('mobMenu');
+        hb.addEventListener('click', () => { hb.classList.toggle('active'); mm.classList.toggle('open'); });
+        mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hb.classList.remove('active'); mm.classList.remove('open'); }));
+
+        // Scroll reveal
+        const ro = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    ro.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => ro.observe(el));
+
+        // Cursor glow
+        const cg = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', e => { cg.style.opacity = '1'; cg.style.left = e.clientX + 'px'; cg.style.top = e.clientY + 'px'; });
+        document.addEventListener('mouseleave', () => cg.style.opacity = '0');
+
+        // Hero converter swap animation
+        const heroSwaps = [
+            { from: '₦500,000', to: '$312.50', cur: '🇺🇸 USD', rate: '1 USD = ₦1,600' },
+            { from: '₦500,000', to: '£247.52', cur: '🇬🇧 GBP', rate: '1 GBP = ₦2,020' },
+            { from: '₦500,000', to: '€287.36', cur: '🇪🇺 EUR', rate: '1 EUR = ₦1,740' },
+        ];
+        let hsi = 0;
+        function heroSwap() {
+            hsi = (hsi + 1) % heroSwaps.length;
+            const d = heroSwaps[hsi];
+            document.getElementById('heroFromAmt').textContent = d.from;
+            document.getElementById('heroToAmt').textContent = d.to;
+            document.getElementById('heroToCur').textContent = d.cur;
+            document.getElementById('heroRate').textContent = d.rate;
+        }
+        setInterval(heroSwap, 4000);
+
+        // Live rate animation on currency cards
+        const baseRates = { usd: 1600, gbp: 2020, eur: 1740, cad: 1180, cny: 220, zar: 88, ghs: 103 };
+        function formatRate(val) {
+            if (val >= 100) return '₦' + Math.round(val).toLocaleString();
+            return '₦' + val.toFixed(1);
+        }
+        function tickRates() {
+            Object.keys(baseRates).forEach(cur => {
+                const base = baseRates[cur];
+                const jitter = (Math.random() - 0.5) * 0.006 * base;
+                const newVal = base + jitter;
+                const el = document.getElementById(cur + '-rate');
+                const chEl = document.getElementById(cur + '-ch');
+                if (!el || !chEl) return;
+                const pct = ((jitter / base) * 100).toFixed(1);
+                el.textContent = formatRate(newVal);
+                el.style.animation = 'none';
+                el.offsetHeight;
+                el.style.animation = 'rateFlash 1s ease';
+                const up = jitter >= 0;
+                chEl.textContent = (up ? '+' : '') + pct + '%';
+                chEl.className = 'curr-change ' + (up ? 'change-up' : 'change-down');
+            });
+        }
+        setInterval(tickRates, 5000);
+
+        // Tilt effect
+        document.querySelectorAll('.stat-card,.feat-card,.testi-card,.curr-card,.uc-card,.hiw-step').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const rx = ((e.clientY - r.top) / r.height - 0.5) * 8;
+                const ry = (0.5 - (e.clientX - r.left) / r.width) * 8;
+                card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px) scale(1.01)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = '');
+        });
+
+        // Wallet card active cycle
+        const walletCards = document.querySelectorAll('.wallet-card');
+        let activeWallet = 0;
+        function cycleWallets() {
+            walletCards.forEach((c, i) => {
+                c.classList.remove('wc-active');
+                if (i === activeWallet) c.classList.add('wc-active');
+            });
+            activeWallet = (activeWallet + 1) % walletCards.length;
+        }
+        setInterval(cycleWallets, 2500);
+
+        // Stagger children of feat-grid
+        document.querySelectorAll('.feat-grid .feat-card,.features-grid .feat-card').forEach((el, i) => {
+            el.style.transitionDelay = (i % 3) * 0.1 + 's';
+        });
+
+        // Photo parallax on use case cards
+        document.querySelectorAll('.uc-photo').forEach(ph => {
+            const img = ph.querySelector('img');
+            if (!img) return;
+            ph.addEventListener('mousemove', e => {
+                const r = ph.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width - 0.5;
+                const y = (e.clientY - r.top) / r.height - 0.5;
+                img.style.transform = `scale(1.07) translate(${x * 8}px,${y * 8}px)`;
+            });
+            ph.addEventListener('mouseleave', () => img.style.transform = '');
+        });
+    </script>
+</body>
+
+</html>
